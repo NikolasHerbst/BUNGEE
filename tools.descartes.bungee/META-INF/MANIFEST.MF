@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bungee
+Bundle-SymbolicName: tools.descartes.bungee
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Uni Würzburg, Chair of Software Engineering
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.emf.ecore.xmi,
+ org.junit,
+ tools.descartes.dlim.generator,
+ tools.descartes.dlim.generator.edit;bundle-version="0.14.10"
+Export-Package: 
+ org.apache.commons.math3.stat.descriptive,
+ tools.descartes.bungee.allocation,
+ tools.descartes.bungee.analysis,
+ tools.descartes.bungee.calibration,
+ tools.descartes.bungee.cloud,
+ tools.descartes.bungee.config,
+ tools.descartes.bungee.examples,
+ tools.descartes.bungee.loadgeneration,
+ tools.descartes.bungee.loadprofile,
+ tools.descartes.bungee.measurement,
+ tools.descartes.bungee.metric,
+ tools.descartes.bungee.slo,
+ tools.descartes.bungee.utils
+Bundle-ClassPath:  .,
+ lib/commons-math3-3.2.jar

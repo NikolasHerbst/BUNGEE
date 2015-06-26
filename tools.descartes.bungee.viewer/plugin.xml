@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="BUNGEE Elasticity Measurement"
+            id="ElasticityMeasurementViewer">
+      </category>
+      <view
+            name="Resource Allocation View"
+            icon="icons/sample.gif"
+            category="ElasticityMeasurementViewer"
+            class="tools.descartes.bungee.viewer.AllocationSeriesView"
+            id="elasticitymeasurementviewer.views.AllocationSeriesView">
+      </view>
+       <view
+            name="Mapping View"
+            icon="icons/sample.gif"
+            category="ElasticityMeasurementViewer"
+            class="tools.descartes.bungee.viewer.MappingView"
+            id="elasticitymeasurementviewer.views.MappingView">
+      </view>
+      <view
+            name="Demand View"
+            icon="icons/sample.gif"
+            category="ElasticityMeasurementViewer"
+            class="tools.descartes.bungee.viewer.DemandView"
+            id="elasticitymeasurementviewer.views.DemandView">
+      </view>
+      <view
+            name="RunResult View"
+            icon="icons/sample.gif"
+            category="ElasticityMeasurementViewer"
+            class="tools.descartes.bungee.viewer.RunResultView"
+            id="elasticitymeasurementviewer.views.RunResultView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="elasticitymeasurementviewer.views.AllocationSeriesView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

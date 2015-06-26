@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Aws
+Bundle-SymbolicName: tools.descartes.bungee.cloud.aws
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: tools.descartes.bungee;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: tools.descartes.bungee.cloud.aws
+Import-Package: tools.descartes.bungee.examples
+Bundle-Vendor: Uni Würzburg, Chair of Software Engineering

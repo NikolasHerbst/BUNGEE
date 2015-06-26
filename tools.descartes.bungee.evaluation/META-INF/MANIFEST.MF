@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Evaluation
+Bundle-SymbolicName: tools.descartes.bungee.evaluation
+Bundle-Version: 1.0.0.qualifier
+Export-Package: tools.descartes.bungee.evaluation
+Require-Bundle: tools.descartes.bungee.cloud.cloudstack,
+ tools.descartes.bungee.cloud.aws,
+ tools.descartes.bungee.chart,
+ tools.descartes.dlim.generator;bundle-version="0.14.10",
+ tools.descartes.bungee;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: lib/commons-math3-3.2.jar,
+ .
+Bundle-Vendor: Uni Würzburg, Chair of Software Engineering

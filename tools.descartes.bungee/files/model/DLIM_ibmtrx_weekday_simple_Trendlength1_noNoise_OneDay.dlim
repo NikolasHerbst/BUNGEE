@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1" name="DLIM_ibmtrx_weekday_simple_Trendlength1_noNoise" terminateAfterTime="508.5" terminateAfterLoops="1" firstIterationEnd="96.0" loopDuration="96.0" finalDuration="96.0">
+  <sequenceFunctionContainers name="seasonal1" duration="2.0" firstIterationEnd="2.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="369.0" functionOutputAtEnd="819.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal2" duration="2.0" firstIterationStart="2.0" firstIterationEnd="4.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="819.0" functionOutputAtEnd="441.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal3" duration="3.0" firstIterationStart="4.0" firstIterationEnd="7.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="441.0" functionOutputAtEnd="594.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal4" firstIterationStart="7.0" firstIterationEnd="8.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="594.0" functionOutputAtEnd="405.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal5" firstIterationStart="8.0" firstIterationEnd="9.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="405.0" functionOutputAtEnd="1098.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal6" duration="2.0" firstIterationStart="9.0" firstIterationEnd="11.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1098.0" functionOutputAtEnd="450.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal7" duration="2.0" firstIterationStart="11.0" firstIterationEnd="13.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="450.0" functionOutputAtEnd="1242.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal8" duration="5.0" firstIterationStart="13.0" firstIterationEnd="18.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1242.0" functionOutputAtEnd="855.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal9" duration="6.0" firstIterationStart="18.0" firstIterationEnd="24.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="855.0" functionOutputAtEnd="33012.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal10" duration="3.0" firstIterationStart="24.0" firstIterationEnd="27.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="33012.0" functionOutputAtEnd="29511.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal11" firstIterationStart="27.0" firstIterationEnd="28.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="29511.0" functionOutputAtEnd="33174.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal12" duration="2.0" firstIterationStart="28.0" firstIterationEnd="30.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="33174.0" functionOutputAtEnd="29511.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal13" firstIterationStart="30.0" firstIterationEnd="31.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="29511.0" functionOutputAtEnd="36180.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal14" duration="2.0" firstIterationStart="31.0" firstIterationEnd="33.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="36180.0" functionOutputAtEnd="29511.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal15" duration="2.0" firstIterationStart="33.0" firstIterationEnd="35.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="29511.0" functionOutputAtEnd="37755.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal16" duration="2.0" firstIterationStart="35.0" firstIterationEnd="37.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="37755.0" functionOutputAtEnd="29034.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal17" duration="2.0" firstIterationStart="37.0" firstIterationEnd="39.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="29034.0" functionOutputAtEnd="37539.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal18" duration="5.0" firstIterationStart="39.0" firstIterationEnd="44.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="37539.0" functionOutputAtEnd="24642.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal19" duration="3.0" firstIterationStart="44.0" firstIterationEnd="47.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="24642.0" functionOutputAtEnd="44118.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal20" firstIterationStart="47.0" firstIterationEnd="48.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="44118.0" functionOutputAtEnd="34524.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal21" firstIterationStart="48.0" firstIterationEnd="49.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="34524.0" functionOutputAtEnd="37269.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal22" duration="3.0" firstIterationStart="49.0" firstIterationEnd="52.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="37269.0" functionOutputAtEnd="34524.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal23" duration="5.0" firstIterationStart="52.0" firstIterationEnd="57.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="34524.0" functionOutputAtEnd="26847.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal24" duration="2.0" firstIterationStart="57.0" firstIterationEnd="59.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="26847.0" functionOutputAtEnd="16353.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal25" duration="4.0" firstIterationStart="59.0" firstIterationEnd="63.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="16353.0" functionOutputAtEnd="16497.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal26" duration="4.0" firstIterationStart="63.0" firstIterationEnd="67.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="16497.0" functionOutputAtEnd="13671.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal27" duration="2.0" firstIterationStart="67.0" firstIterationEnd="69.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="13671.0" functionOutputAtEnd="14427.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal28" duration="2.0" firstIterationStart="69.0" firstIterationEnd="71.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="14427.0" functionOutputAtEnd="12069.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal29" duration="3.0" firstIterationStart="71.0" firstIterationEnd="74.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="12069.0" functionOutputAtEnd="14445.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal30" duration="4.0" firstIterationStart="74.0" firstIterationEnd="78.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="14445.0" functionOutputAtEnd="3753.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal31" duration="3.0" firstIterationStart="78.0" firstIterationEnd="81.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="3753.0" functionOutputAtEnd="5103.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal32" duration="3.0" firstIterationStart="81.0" firstIterationEnd="84.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="5103.0" functionOutputAtEnd="2205.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal33" firstIterationStart="84.0" firstIterationEnd="85.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2205.0" functionOutputAtEnd="2718.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal34" duration="3.0" firstIterationStart="85.0" firstIterationEnd="88.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2718.0" functionOutputAtEnd="1584.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal35" firstIterationStart="88.0" firstIterationEnd="89.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1584.0" functionOutputAtEnd="2142.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal36" firstIterationStart="89.0" firstIterationEnd="90.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2142.0" functionOutputAtEnd="1125.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal37" firstIterationStart="90.0" firstIterationEnd="91.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1125.0" functionOutputAtEnd="2322.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal38" duration="3.0" firstIterationStart="91.0" firstIterationEnd="94.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2322.0" functionOutputAtEnd="630.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal39" firstIterationStart="94.0" firstIterationEnd="95.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="630.0" functionOutputAtEnd="711.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal40" firstIterationStart="95.0" firstIterationEnd="96.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="711.0" functionOutputAtEnd="369.0"/>
+  </sequenceFunctionContainers>
+</tools.descartes.dlim:Sequence>

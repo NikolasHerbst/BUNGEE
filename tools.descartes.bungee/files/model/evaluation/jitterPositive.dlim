@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1" name="jitter" terminateAfterLoops="1" firstIterationEnd="600.0" loopDuration="600.0"
+    finalDuration="600.0">
+  <sequenceFunctionContainers name="seasonal2" duration="600.0" firstIterationEnd="600.0">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="90.0"/>
+  </sequenceFunctionContainers>
+</tools.descartes.dlim:Sequence>

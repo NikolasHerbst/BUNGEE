@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.5" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <package id="1" language="java" name="tools.descartes.bungee.slo" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/slo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1179" y="263"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="tools.descartes.bungee.analysis" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/analysis" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1275" y="419"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="tools.descartes.bungee.loadgeneration" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/loadgeneration" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1017" y="337"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="tools.descartes.bungee.loadprofile" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/loadprofile" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1540" y="418"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="tools.descartes.bungee.cloud" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/cloud" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="867" y="422"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="tools.descartes.bungee.allocation" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/allocation" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="630" y="418"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="tools.descartes.bungee.metric" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/metric" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="646" y="138"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="8" language="java" name="tools.descartes.bungee.measurement" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/measurement" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1150" y="161"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="9" language="java" name="tools.descartes.bungee.calibration" project="tools.descartes.bungee" 
+    file="/tools.descartes.bungee/src/tools/descartes/bungee/calibration" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1424" y="312"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <dependency id="10">    
+    <bendpoint x="664" y="179"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="11">    
+    <bendpoint x="1293" y="171"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="12">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="13">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="14">    
+    <bendpoint x="868" y="184"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="15">    
+    <bendpoint x="1034" y="195"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="16">    
+    <bendpoint x="1542" y="167"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="21">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

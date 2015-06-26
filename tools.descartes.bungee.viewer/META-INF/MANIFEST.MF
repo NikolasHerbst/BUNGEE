@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: tools.descartes.bungee.viewer
+Bundle-SymbolicName: tools.descartes.bungee.viewer;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: University of Würzburg, Chair of Software Engineering
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui.workbench,
+ org.eclipse.core.resources,
+ org.eclipse.swt,
+ org.eclipse.jface,
+ tools.descartes.bungee.chart,
+ org.jfree.chart,
+ tools.descartes.bungee;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: tools.descartes.dlim.generator

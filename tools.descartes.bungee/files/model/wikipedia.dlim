@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1" name="default" terminateAfterTime="1482.5" firstIterationEnd="1482.5" loopDuration="24.0" finalDuration="1482.5">
+  <combine operator="MULT">
+    <function xsi:type="tools.descartes.dlim:Sequence" name="trends" terminateAfterTime="1482.5" firstIterationEnd="1482.5" loopDuration="1482.5" finalDuration="1482.5">
+      <sequenceFunctionContainers name="offset" duration="10.0" firstIterationEnd="10.0">
+        <function xsi:type="tools.descartes.dlim:Constant" constant="1.0674016081962094"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend0" duration="24.0" firstIterationStart="10.0" firstIterationEnd="34.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0674016081962094" functionOutputAtEnd="1.0380504642129451"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend1" duration="24.0" firstIterationStart="34.0" firstIterationEnd="58.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.038050464212945" functionOutputAtEnd="0.8885802845312042"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend2" duration="24.0" firstIterationStart="58.0" firstIterationEnd="82.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.8885802845312041" functionOutputAtEnd="0.7745734274732688"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend3" duration="24.0" firstIterationStart="82.0" firstIterationEnd="106.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.7745734274732688"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend4" duration="24.0" firstIterationStart="106.0" firstIterationEnd="130.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0" functionOutputAtEnd="1.0862632749587802"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend5" duration="24.0" firstIterationStart="130.0" firstIterationEnd="154.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0862632749587802" functionOutputAtEnd="1.076747034188782"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend6" duration="24.0" firstIterationStart="154.0" firstIterationEnd="178.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0767470341887815" functionOutputAtEnd="1.0826888511414914"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend7" duration="24.0" firstIterationStart="178.0" firstIterationEnd="202.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0826888511414914" functionOutputAtEnd="1.0510858518696062"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend8" duration="24.0" firstIterationStart="202.0" firstIterationEnd="226.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0510858518696062" functionOutputAtEnd="0.8864720586442925"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend9" duration="24.0" firstIterationStart="226.0" firstIterationEnd="250.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.8864720586442925" functionOutputAtEnd="0.7819293370528968"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend10" duration="24.0" firstIterationStart="250.0" firstIterationEnd="274.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.7819293370528968" functionOutputAtEnd="1.0290280911018188"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend11" duration="24.0" firstIterationStart="274.0" firstIterationEnd="298.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0290280911018188" functionOutputAtEnd="1.1574264329751358"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend12" duration="24.0" firstIterationStart="298.0" firstIterationEnd="322.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.1574264329751358" functionOutputAtEnd="1.1218598059236027"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend13" duration="24.0" firstIterationStart="322.0" firstIterationEnd="346.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.1218598059236027" functionOutputAtEnd="1.066336394557669"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend14" duration="24.0" firstIterationStart="346.0" firstIterationEnd="370.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.066336394557669" functionOutputAtEnd="1.00741254577904"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend15" duration="24.0" firstIterationStart="370.0" firstIterationEnd="394.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.00741254577904" functionOutputAtEnd="0.8375302267396262"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend16" duration="24.0" firstIterationStart="394.0" firstIterationEnd="418.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.8375302267396262" functionOutputAtEnd="0.6986519225271163"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend17" duration="24.0" firstIterationStart="418.0" firstIterationEnd="442.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.6986519225271163" functionOutputAtEnd="0.931504180431151"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend18" duration="24.0" firstIterationStart="442.0" firstIterationEnd="466.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.931504180431151" functionOutputAtEnd="1.0218153578343043"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend19" duration="24.0" firstIterationStart="466.0" firstIterationEnd="490.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0218153578343043" functionOutputAtEnd="0.9601684405879471"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend20" duration="24.0" firstIterationStart="490.0" firstIterationEnd="514.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9601684405879471" functionOutputAtEnd="0.880354442928608"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend21" duration="24.0" firstIterationStart="514.0" firstIterationEnd="538.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.880354442928608" functionOutputAtEnd="0.7966497649144635"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend22" duration="24.0" firstIterationStart="538.0" firstIterationEnd="562.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.7966497649144635" functionOutputAtEnd="0.6699713511448895"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend23" duration="24.0" firstIterationStart="562.0" firstIterationEnd="586.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.6699713511448895" functionOutputAtEnd="0.622223863413423"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend24" duration="24.0" firstIterationStart="586.0" firstIterationEnd="610.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.622223863413423" functionOutputAtEnd="0.704935369034679"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend25" duration="24.0" firstIterationStart="610.0" firstIterationEnd="634.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.704935369034679" functionOutputAtEnd="0.9008494976822202"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend26" duration="24.0" firstIterationStart="634.0" firstIterationEnd="658.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9008494976822202" functionOutputAtEnd="0.9030460760402145"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend27" duration="24.0" firstIterationStart="658.0" firstIterationEnd="682.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9030460760402145" functionOutputAtEnd="0.9187315847397612"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend28" duration="24.0" firstIterationStart="682.0" firstIterationEnd="706.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9187315847397612" functionOutputAtEnd="0.858170270163733"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend29" duration="24.0" firstIterationStart="706.0" firstIterationEnd="730.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.858170270163733" functionOutputAtEnd="0.7885571316528844"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend30" duration="24.0" firstIterationStart="730.0" firstIterationEnd="754.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.7885571316528844" functionOutputAtEnd="0.9391043053026434"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend31" duration="24.0" firstIterationStart="754.0" firstIterationEnd="778.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9391043053026434" functionOutputAtEnd="1.074548190382811"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend32" duration="24.0" firstIterationStart="778.0" firstIterationEnd="802.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.074548190382811" functionOutputAtEnd="1.1651883108321488"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend33" duration="24.0" firstIterationStart="802.0" firstIterationEnd="826.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.1651883108321488" functionOutputAtEnd="1.1042350737561897"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend34" duration="24.0" firstIterationStart="826.0" firstIterationEnd="850.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.1042350737561897" functionOutputAtEnd="1.1422597118622029"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend35" duration="24.0" firstIterationStart="850.0" firstIterationEnd="874.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.1422597118622029" functionOutputAtEnd="1.1641344244334908"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend36" duration="24.0" firstIterationStart="874.0" firstIterationEnd="898.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.1641344244334908" functionOutputAtEnd="1.033295288910315"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend37" duration="24.0" firstIterationStart="898.0" firstIterationEnd="922.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.033295288910315" functionOutputAtEnd="0.9724806972505164"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend38" duration="24.0" firstIterationStart="922.0" firstIterationEnd="946.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9724806972505164" functionOutputAtEnd="1.2617176898411422"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend39" duration="24.0" firstIterationStart="946.0" firstIterationEnd="970.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2617176898411422" functionOutputAtEnd="1.2293145343439649"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend40" duration="24.0" firstIterationStart="970.0" firstIterationEnd="994.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2293145343439649" functionOutputAtEnd="1.2853340788167475"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend41" duration="24.0" firstIterationStart="994.0" firstIterationEnd="1018.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2853340788167475" functionOutputAtEnd="1.2734635845095916"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend42" duration="24.0" firstIterationStart="1018.0" firstIterationEnd="1042.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2734635845095916" functionOutputAtEnd="1.2093079101740818"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend43" duration="24.0" firstIterationStart="1042.0" firstIterationEnd="1066.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2093079101740816" functionOutputAtEnd="1.0389860942272309"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend44" duration="24.0" firstIterationStart="1066.0" firstIterationEnd="1090.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0389860942272309" functionOutputAtEnd="0.9244405136404888"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend45" duration="24.0" firstIterationStart="1090.0" firstIterationEnd="1114.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9244405136404888" functionOutputAtEnd="1.3003662323198777"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend46" duration="24.0" firstIterationStart="1114.0" firstIterationEnd="1138.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.3003662323198777" functionOutputAtEnd="1.3066591937089418"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend47" duration="24.0" firstIterationStart="1138.0" firstIterationEnd="1162.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.3066591937089416" functionOutputAtEnd="1.2882719117526458"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend48" duration="24.0" firstIterationStart="1162.0" firstIterationEnd="1186.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2882719117526458" functionOutputAtEnd="1.2706888638279998"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend49" duration="24.0" firstIterationStart="1186.0" firstIterationEnd="1210.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2706888638279998" functionOutputAtEnd="1.2132203388294611"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend50" duration="24.0" firstIterationStart="1210.0" firstIterationEnd="1234.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2132203388294611" functionOutputAtEnd="1.0429216304519704"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend51" duration="24.0" firstIterationStart="1234.0" firstIterationEnd="1258.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0429216304519704" functionOutputAtEnd="0.9034008451933311"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend52" duration="24.0" firstIterationStart="1258.0" firstIterationEnd="1282.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.9034008451933311" functionOutputAtEnd="1.3288537875345083"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend53" duration="24.0" firstIterationStart="1282.0" firstIterationEnd="1306.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.3288537875345083" functionOutputAtEnd="1.335074254588325"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend54" duration="24.0" firstIterationStart="1306.0" firstIterationEnd="1330.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.335074254588325" functionOutputAtEnd="1.2944389142342174"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend55" duration="24.0" firstIterationStart="1330.0" firstIterationEnd="1354.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2944389142342174" functionOutputAtEnd="1.2825149553548167"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend56" duration="24.0" firstIterationStart="1354.0" firstIterationEnd="1378.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.2825149553548167" functionOutputAtEnd="1.0804514947199206"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend57" duration="24.0" firstIterationStart="1378.0" firstIterationEnd="1402.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0804514947199204" functionOutputAtEnd="0.8965125240760485"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend58" duration="24.0" firstIterationStart="1402.0" firstIterationEnd="1426.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.8965125240760484" functionOutputAtEnd="0.7479281345531109"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="trend59" duration="24.0" firstIterationStart="1426.0" firstIterationEnd="1450.0">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="0.7479281345531109" functionOutputAtEnd="1.0676417456817164"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="holdLastTrend" duration="32.5" firstIterationStart="1450.0" firstIterationEnd="1482.5">
+        <function xsi:type="tools.descartes.dlim:Constant" constant="1.0676417456817164"/>
+      </sequenceFunctionContainers>
+    </function>
+  </combine>
+  <combine>
+    <function xsi:type="tools.descartes.dlim:Sequence" name="bursts" terminateAfterTime="1482.5" terminateAfterLoops="1" firstIterationEnd="1317.0" loopDuration="1317.0" finalDuration="1317.0">
+      <sequenceFunctionContainers name="burstOffset0" duration="130.0" firstIterationEnd="130.0"/>
+      <sequenceFunctionContainers name="burst0" duration="12.0" firstIterationStart="130.0" firstIterationEnd="142.0">
+        <function xsi:type="tools.descartes.dlim:ExponentialIncreaseAndDecline" peak="931838.9589848067" peakTime="6.0"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="burstOffset1" duration="445.0" firstIterationStart="142.0" firstIterationEnd="587.0"/>
+      <sequenceFunctionContainers name="burst1" duration="12.0" firstIterationStart="587.0" firstIterationEnd="599.0">
+        <function xsi:type="tools.descartes.dlim:ExponentialIncreaseAndDecline" peak="482230.4086480024" peakTime="6.0"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="burstOffset2" duration="706.0" firstIterationStart="599.0" firstIterationEnd="1305.0"/>
+      <sequenceFunctionContainers name="burst2" duration="12.0" firstIterationStart="1305.0" firstIterationEnd="1317.0">
+        <function xsi:type="tools.descartes.dlim:ExponentialIncreaseAndDecline" peak="818378.4477028456" peakTime="6.0"/>
+      </sequenceFunctionContainers>
+    </function>
+  </combine>
+  <sequenceFunctionContainers name="seasonal1" duration="10.0" firstIterationEnd="10.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="268988.0" functionOutputAtEnd="2207069.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal2" duration="3.0" firstIterationStart="10.0" firstIterationEnd="13.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2207069.0" functionOutputAtEnd="1991666.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal3" duration="2.0" firstIterationStart="13.0" firstIterationEnd="15.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1991666.0" functionOutputAtEnd="2161590.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="seasonal4" duration="9.0" firstIterationStart="15.0" firstIterationEnd="24.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2161590.0" functionOutputAtEnd="268988.0"/>
+  </sequenceFunctionContainers>
+</tools.descartes.dlim:Sequence>

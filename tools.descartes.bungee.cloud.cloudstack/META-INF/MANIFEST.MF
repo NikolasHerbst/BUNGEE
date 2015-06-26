@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Cloudstack
+Bundle-SymbolicName: tools.descartes.bungee.cloud.cloudstack
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: cloudstackapi,
+ org.apache.commons.httpclient,
+ tools.descartes.bungee;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: tools.descartes.bungee.cloud.cloudstack,
+ tools.descartes.bungee.examples
+Bundle-Vendor: Uni Würzburg, Chair of Software Engineering

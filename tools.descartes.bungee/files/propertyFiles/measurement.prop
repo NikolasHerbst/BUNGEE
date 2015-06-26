@@ -1,0 +1,10 @@
+#
+#Tue Jun 07 14:38:27 CEST 2015
+mappingFile=../calibration/aws.m1.small-simple.mapping
+numberOfBenchmarkedResources=3
+relativePathes=true
+intensityModelFile=../model/DLIM_ibmtrx_weekday_simple_Trendlength1_noNoise_OneDay.dlim
+hostPropertiesFile=host.prop
+requestPropertiesFile=request.prop
+warmUpSeconds=300
+secondsPerTimeUnit=2700

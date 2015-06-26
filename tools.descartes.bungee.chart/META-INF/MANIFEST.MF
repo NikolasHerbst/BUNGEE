@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Chart
+Bundle-SymbolicName: tools.descartes.bungee.chart
+Bundle-Version: 1.0.0.qualifier
+Export-Package: tools.descartes.bungee.chart,
+ tools.descartes.bungee.examples
+Require-Bundle: org.jfree.chart;visibility:=reexport,
+ tools.descartes.dlim.generator;bundle-version="0.14.10",
+ tools.descartes.bungee;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: Uni Würzburg, Chair of Software Engineering

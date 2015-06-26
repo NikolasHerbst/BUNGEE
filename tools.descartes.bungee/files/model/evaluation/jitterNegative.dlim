@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1" name="Concatenated" terminateAfterLoops="1" firstIterationEnd="4497.503335691951" loopDuration="4497.503335691951" finalDuration="4497.503335691951">
+  <sequenceFunctionContainers duration="420.0" firstIterationEnd="420.0">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="420.0" firstIterationStart="420.0" firstIterationEnd="840.0">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="357.0" firstIterationStart="840.0" firstIterationEnd="1197.0">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="357.0" firstIterationStart="1197.0" firstIterationEnd="1554.0">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="303.45" firstIterationStart="1554.0" firstIterationEnd="1857.45">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="303.45" firstIterationStart="1857.45" firstIterationEnd="2160.9">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="257.9325" firstIterationStart="2160.9" firstIterationEnd="2418.8325">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="257.9325" firstIterationStart="2418.8325" firstIterationEnd="2676.765">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="219.242625" firstIterationStart="2676.765" firstIterationEnd="2896.0076249999997">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="219.242625" firstIterationStart="2896.0076249999997" firstIterationEnd="3115.2502499999996">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="186.35623125" firstIterationStart="3115.2502499999996" firstIterationEnd="3301.6064812499994">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="186.35623125" firstIterationStart="3301.6064812499994" firstIterationEnd="3487.9627124999993">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="158.40279656250001" firstIterationStart="3487.9627124999993" firstIterationEnd="3646.3655090624993">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="158.40279656250001" firstIterationStart="3646.3655090624993" firstIterationEnd="3804.7683056249994">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="134.642377078125" firstIterationStart="3804.7683056249994" firstIterationEnd="3939.410682703124">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="134.642377078125" firstIterationStart="3939.410682703124" firstIterationEnd="4074.053059781249">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="114.44602051640625" firstIterationStart="4074.053059781249" firstIterationEnd="4188.499080297655">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="114.44602051640625" firstIterationStart="4188.499080297655" firstIterationEnd="4302.945100814061">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="97.2791174389453" firstIterationStart="4302.945100814061" firstIterationEnd="4400.224218253006">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="50.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers duration="97.2791174389453" firstIterationStart="4400.224218253006" firstIterationEnd="4497.503335691951">
+    <function xsi:type="tools.descartes.dlim:Constant" constant="150.0"/>
+  </sequenceFunctionContainers>
+</tools.descartes.dlim:Sequence>
