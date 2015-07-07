@@ -7,4 +7,4 @@ intensityModelFile=../model/DLIM_ibmtrx_weekday_simple_Trendlength1_noNoise_OneD
 hostPropertiesFile=host.prop
 requestPropertiesFile=request.prop
 warmUpSeconds=300
-secondsPerTimeUnit=2700
+secondsPerTimeUnit=225
