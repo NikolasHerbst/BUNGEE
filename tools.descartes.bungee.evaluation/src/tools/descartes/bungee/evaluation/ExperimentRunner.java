@@ -21,7 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import tools.descartes.bungee.cloud.CloudManagement;
-import tools.descartes.bungee.cloud.aws.AWSManagement;
+//import tools.descartes.bungee.cloud.aws.AWSManagement;
 import tools.descartes.bungee.cloud.cloudstack.CloudstackControllerImpl;
 import tools.descartes.bungee.cloud.cloudstack.CloudstackManagement;
 import tools.descartes.bungee.config.Host;
@@ -42,11 +42,11 @@ public class ExperimentRunner {
 		File awsSmallHostFile 		= new File(FileUtility.FILE_LOCATION, "propertyFiles/hostAWS-m1.small.prop");
 		File awsMediumHostFile 		= new File(FileUtility.FILE_LOCATION, "propertyFiles/hostAWS-m1.medium.prop");
 		Host cloudStackHost = Host.load(cloudStackHostFile);
-		Host awsHost = Host.load(awsSmallHostFile);
+//		Host awsHost = Host.load(awsSmallHostFile);
 		JMeterController jmeter = new JMeterController(jmeterProperties);
 		CloudstackControllerImpl cloudController = new CloudstackControllerImpl(cloudControllerFile);
 		CloudManagement cloudStack = new CloudstackManagement(cloudController);
-		CloudManagement awsManagement = new AWSManagement();
+//		CloudManagement awsManagement = new AWSManagement();
 		Request request = Request.load(requestPropertiesFile);
 		ServiceLevelObjective slo = new SuccessRateSLO(95, 500);
 		
@@ -62,10 +62,10 @@ public class ExperimentRunner {
 		AbstractExperiment linearity1Core = new ScalabilityLinearityEvaluation(jmeter, cloudController, "cloudSettings1Core.prop", request, 12,1);
 		AbstractExperiment linearity2Core = new ScalabilityLinearityEvaluation(jmeter, cloudController, "cloudSettings2Core.prop", request, 20,1);
 		AbstractExperiment linearity4Core = new ScalabilityLinearityEvaluation(jmeter, cloudController, "cloudSettings4Core.prop", request, 20,1);
-		AbstractExperiment detailed = new DetailedScalabilityLinearityEvaluation(jmeter, awsManagement, awsHost, request, 10, 8, slo);
+//		AbstractExperiment detailed = new DetailedScalabilityLinearityEvaluation(jmeter, awsManagement, awsHost, request, 10, 8, slo);
 		
 		List<AbstractExperiment> experimentList = new LinkedList<AbstractExperiment>();
-		experimentList.add(detailed);
+//		experimentList.add(detailed);
 //		experimentList.add(jitterPos);
 //		experimentList.add(accuracyU);
 //		experimentList.add(linearity2Core);

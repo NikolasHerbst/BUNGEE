@@ -52,13 +52,13 @@ public class RunBenchmark {
 		}
 	}
 
-	public static void runBenchmarkManagedCloud(CloudManagement cloud, File configFile, int loops) {
+/*	public static void runBenchmarkManagedCloud(CloudManagement cloud, File configFile, int loops) {
 		MeasurementConfig config = MeasurementConfig.load(configFile);
 		cloud.setScalingBounds(config.getHost().getHostName(), new Bounds(1,config.getNumberOfBenchmarkedResources()));
 		runBenchmark(cloud, configFile, loops);
 		// save costs and deallocate resources;
 		cloud.setScalingBounds(config.getHost().getHostName(), new Bounds(0,0));
-	}
+	}*/
 	
 	public static void runBenchmark(CloudInfo cloud, File measurementFolder, MeasurementConfig config) {
 		// save config

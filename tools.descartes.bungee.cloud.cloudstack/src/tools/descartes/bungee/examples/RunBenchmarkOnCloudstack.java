@@ -29,7 +29,7 @@ public class RunBenchmarkOnCloudstack {
 	private static ExtendedCloudInfo cloud = new  CloudstackInfo(new CloudstackControllerImpl(new File(fileLocation,"propertyFiles/cloudstack.prop")));
 	
 	public static void main(String[] args) {
-		File measurementConfigFile  = new File(fileLocation,"propertyFiles/measurement-oneDay-twoCore-6h.prop");
+		File measurementConfigFile  = new File(fileLocation,"propertyFiles/measurement.prop");
 		RunBenchmark.runBenchmark(cloud, measurementConfigFile,1);
 	}
 }

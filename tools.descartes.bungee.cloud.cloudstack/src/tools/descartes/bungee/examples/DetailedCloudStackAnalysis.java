@@ -36,7 +36,7 @@ public class DetailedCloudStackAnalysis {
 		File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/host.prop");
 		File requestPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/request.prop");
 		File cloudStackPropsFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop");
-		File cloudSettingFile		= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudSettings2Core.prop");
+		File cloudSettingFile		= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudSettings.prop");
 		
 		int maxResources = 25;
 		double percent = 95;
@@ -55,7 +55,7 @@ public class DetailedCloudStackAnalysis {
 		//ScalabilityAnalysis analysis = new SimpleScalabilityAnalysis(jMeter);
 		SystemAnalysis analysis = new DetailedSystemAnalysis(jMeter, cloudManagement);
 		
-		host.setHostName("10.1.3.5");
+		//host.setHostName("10.1.1.10");
 		
 		analysis.setMaxResources(maxResources);
 		analysis.analyzeSystem(host, request, slo);

@@ -22,9 +22,9 @@ import org.w3c.dom.Document;
 
 public class listLoadBalancerRules {
   public static void main(String[] args) throws Exception {
-    String secret = "ezTQdv-TEOLAj8f1u_2XBnHIpA6GMK_jZULHvPCr8KeVpdCsD8ZcOUz6kFkaigpzBUkalLsofTikd_cFfVHyNQ"; //System.getenv("ESTRAT_SECRET");
-	String apikey = "ow6-UWbqwiieO-zFgSqbIdB1P8fAXjfWW_gBaKzFEyy9i7siOn9H4GePg7x1jjhHFaYf0yEjcE18DvrKA4wpDw"; //System.getenv("ESTRAT_APIKEY");
-	String apiURL = "http://141.21.72.8:8080/client/api";
+	String secret = "nRl7nsrfjLuIgdLt98mYyEn6ZSanUrBwA3-SX0J2SitkpPLwRLvAYMXUPDfNLZE40u0hBtnX-zkXxKmj_7rIXw";
+	String apikey = "t8bRnvTEACYz1SsJNOA_O9KKPb77RNitz5ipcNsNdws1ein1sE2SUAdxJHEz69IvednN7_jT0NZehHxGF6gLgA";
+	String apiURL = "http://10.1.1.10:8080/client/api";
 	
 	CloudStackAPI  client = new CloudStackAPI(apiURL, secret, apikey);
     HashMap<String,String> options = CLI.args_to_options(args);
