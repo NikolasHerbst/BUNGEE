@@ -1,5 +1,6 @@
 /*******************************************************************************
 Copyright 2015 Andreas Weber, Nikolas Herbst
+Update 2016 André Bauer
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -33,7 +34,7 @@ public class CloudStackAPI extends CloudStack {
 		this.apiURL = apiURL;
 	}
 
-
+	@Override
 	protected HttpMethod makeHttpGet(LinkedList<NameValuePair> queryValues) throws Exception {
 		String query_signature = sign_request(queryValues);
 		queryValues.add(new NameValuePair("signature",query_signature));
@@ -44,6 +45,13 @@ public class CloudStackAPI extends CloudStack {
 
 		return method;
 	}
+	
+	public Document destroyVirtualMachine(String id, boolean expunge) throws Exception {
+	    LinkedList<NameValuePair> arguments = newQueryValues("destroyVirtualMachine",null);
+	    arguments.add(new NameValuePair("id",id));
+	    arguments.add(new NameValuePair("expunge",""+expunge));
+	    return Request(arguments);
+	  }
 
 	public Document listApis(HashMap<String,String> optional) throws Exception {
 		LinkedList<NameValuePair> arguments = newQueryValues("listApis",optional);
@@ -174,6 +182,13 @@ public class CloudStackAPI extends CloudStack {
 		LinkedList<NameValuePair> arguments = newQueryValues("deleteCondition",null);
 		arguments.add(new NameValuePair("id",id));
 		return Request(arguments);
+	}
+
+	public Document startVirtualMachine(String id, String hostid) throws Exception {
+		LinkedList<NameValuePair> arguments = newQueryValues("startVirtualMachine",null);
+	    arguments.add(new NameValuePair("id",id));
+	    arguments.add(new NameValuePair("hostid",hostid));
+	    return Request(arguments);
 	}
 
 }
