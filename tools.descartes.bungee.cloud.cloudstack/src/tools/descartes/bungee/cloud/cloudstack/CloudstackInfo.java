@@ -1,5 +1,6 @@
 /*******************************************************************************
 Copyright 2015 Andreas Weber, Nikolas Herbst
+Edited by André Bauer, 2016
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -33,8 +34,13 @@ public class CloudstackInfo implements ExtendedCloudInfo {
 	}
 
 	@Override
-	public int getNumberOfResources(String ip) {
-		return cloudstackImpl.getNumberOfResources(ip);
+	public int getNumberOfResources(String tag) {
+		return cloudstackImpl.getNumberOfResources(tag);
+	}
+	
+	@Override
+	public int getNumberOfResources() {
+		return cloudstackImpl.getNumberOfResources("");
 	}
 
 	@Override
@@ -42,5 +48,7 @@ public class CloudstackInfo implements ExtendedCloudInfo {
 			Date endDate, String ip) {
 		return cloudstackImpl.getResourceAllocations(startDate, endDate, ip);
 	}
+
+	
 
 }

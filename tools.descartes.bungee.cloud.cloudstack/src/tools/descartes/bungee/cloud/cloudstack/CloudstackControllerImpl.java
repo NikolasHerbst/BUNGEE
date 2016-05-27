@@ -199,21 +199,14 @@ public class CloudstackControllerImpl implements ResultListener {
 		return ids;
 	}
 	
-	public int getNumberOfResources(String ip) {
-		int number = 0;
-		CSLB csLB = getLBForIP(ip);	
-		HashMap<String,String> options = new HashMap<>();
-		options.put("state", "running");
+	public int getNumberOfResources(String tag) {
 		try {
-			Document events = client.listLoadBalancerRuleInstances(csLB.id, options);
-			XPathFactory factory = XPathFactory.newInstance();
-			XPath xpath = factory.newXPath();
-			XPathExpression count_xp = xpath.compile("//count/text()");
-			number = ((Double) count_xp.evaluate(events, XPathConstants.NUMBER)).intValue();
+			return new CloudStackInteraction("1").getNumberOfResources(tag);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return 0;
 		}
-		return number;
 	}
 
 	public List<SupplySeries> getResourceAllocations(Date startDate, Date endDate, String ip) {

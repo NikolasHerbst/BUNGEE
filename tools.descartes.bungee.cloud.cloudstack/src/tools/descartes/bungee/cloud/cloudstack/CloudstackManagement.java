@@ -123,5 +123,10 @@ public class CloudstackManagement implements CloudManagement {
 		return cloud.getNumberOfResources(ip);
 	}
 
+	@Override
+	public int getNumberOfResources() {
+		return cloud.getNumberOfResources("");
+	}
+
 	
 }

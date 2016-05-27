@@ -1,0 +1,5 @@
+#
+#Tue Mar 24 15:12:50 CET 2016
+hostname=10.1.220.20
+port=8080
+path=/tools.descartes.bungee.Servlet/BungeeServlet

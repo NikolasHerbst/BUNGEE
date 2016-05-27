@@ -1,5 +1,6 @@
 /*******************************************************************************
 Copyright 2015 Andreas Weber, Nikolas Herbst
+Edited by André Bauer, 2016
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -60,7 +61,7 @@ public class JMeterController {
 		System.out.println("Required Threads: " + threads);
 		threads = (int) (threads * SCALE_UP_REQUESTS);
 		System.out.println("Used Threads: " + threads);
-		runJMeter(outputFile, host.getHostName(), host.getPort(),
+		runJMeter(outputFile, host.getHostName(), host.getPort(), host.getPath(), 
 				threads, request.getProblemSize(),  request.getTimeout(), timestampFile);
 	}
 
@@ -83,7 +84,7 @@ public class JMeterController {
 		return threads;
 	}
 	
-	private void runJMeter(File outputFile, String hostname, int port,
+	private void runJMeter(File outputFile, String hostname,  int port, String path,
 			int threads, int problemSize,  int timeout, File timestampFile) {
 
 		//remapIp
@@ -91,7 +92,7 @@ public class JMeterController {
 		
 		// generate parameters for run
 		String params = generateJMeterParameters(noGui, jmxFile,
-				timestampFile, outputFile, properyFile, hostname, port, threads,
+				timestampFile, outputFile, properyFile, hostname, port, path, threads,
 				problemSize, timeout);
 		
 		// get duration of run
@@ -132,7 +133,7 @@ public class JMeterController {
 	}
 	
 	private static String generateJMeterParameters(boolean noGui, File jmxFile, File timestampFile,
-			File outputFile, File properyFile, String hostname, int port, int threads, int problemSize, int timeout) {
+			File outputFile, File properyFile, String hostname, int port, String path, int threads, int problemSize, int timeout) {
 		properyFile = FileUtility.getAbsolutePath(properyFile);
 		jmxFile = FileUtility.getAbsolutePath(jmxFile);
 		String params = " -t " + enquote(jmxFile.toString()) 
@@ -141,6 +142,7 @@ public class JMeterController {
 							   + " -JoutputFile=" + enquote(outputFile.toString())
 							   + " -Jhostname=" + hostname
 							   + " -Jport=" + port
+							   + " -Jpath=" + path
 				               + " -JnumberOfThreads=" + threads
 				               + " -JproblemSize=" + problemSize
 							   + " -Jtimeout=" + timeout ;

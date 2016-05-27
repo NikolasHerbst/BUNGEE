@@ -18,6 +18,7 @@ package tools.descartes.bungee.examples;
 import java.io.File;
 
 import tools.descartes.bungee.analysis.DetailedSystemAnalysis;
+import tools.descartes.bungee.analysis.SimpleSystemAnalysis;
 import tools.descartes.bungee.analysis.SystemAnalysis;
 import tools.descartes.bungee.cloud.cloudstack.CloudstackManagement;
 import tools.descartes.bungee.config.Host;
@@ -33,6 +34,7 @@ public class DetailedCloudStackAnalysis {
 	
 	public static void main(String[] args) {
 		File jmeterPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/jmeter.prop");
+		//File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/bungeeservlet.prop");
 		File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/host.prop");
 		File requestPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/request.prop");
 		File cloudStackPropsFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop");
@@ -52,8 +54,8 @@ public class DetailedCloudStackAnalysis {
 		
 		
 		
-		//ScalabilityAnalysis analysis = new SimpleScalabilityAnalysis(jMeter);
-		SystemAnalysis analysis = new DetailedSystemAnalysis(jMeter, cloudManagement);
+		SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
+		//SystemAnalysis analysis = new DetailedSystemAnalysis(jMeter, cloudManagement);
 		
 		//host.setHostName("10.1.1.10");
 		
