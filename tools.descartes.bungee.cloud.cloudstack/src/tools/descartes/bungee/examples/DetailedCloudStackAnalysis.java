@@ -21,6 +21,7 @@ import tools.descartes.bungee.analysis.DetailedSystemAnalysis;
 import tools.descartes.bungee.analysis.SimpleSystemAnalysis;
 import tools.descartes.bungee.analysis.SystemAnalysis;
 import tools.descartes.bungee.cloud.cloudstack.CloudstackManagement;
+import tools.descartes.bungee.cloud.cloudstack.DetailedSystemAnalysisWithoutLoadBalancer;
 import tools.descartes.bungee.config.Host;
 import tools.descartes.bungee.config.Request;
 import tools.descartes.bungee.loadgeneration.JMeterController;
@@ -40,7 +41,7 @@ public class DetailedCloudStackAnalysis {
 		File cloudStackPropsFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop");
 		File cloudSettingFile		= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudSettings.prop");
 		
-		int maxResources = 25;
+		int maxResources = 5;
 		double percent = 95;
 		int responseTime = 500;
 
@@ -55,7 +56,7 @@ public class DetailedCloudStackAnalysis {
 		
 		
 		//SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
-		SystemAnalysis analysis = new DetailedSystemAnalysis(jMeter, cloudManagement);
+		SystemAnalysis analysis = new DetailedSystemAnalysisWithoutLoadBalancer(jMeter, cloudManagement);
 		
 		//host.setHostName("10.1.1.10");
 		
