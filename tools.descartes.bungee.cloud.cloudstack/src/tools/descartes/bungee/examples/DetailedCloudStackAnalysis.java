@@ -54,8 +54,8 @@ public class DetailedCloudStackAnalysis {
 		
 		
 		
-		SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
-		//SystemAnalysis analysis = new DetailedSystemAnalysis(jMeter, cloudManagement);
+		//SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
+		SystemAnalysis analysis = new DetailedSystemAnalysis(jMeter, cloudManagement);
 		
 		//host.setHostName("10.1.1.10");
 		
