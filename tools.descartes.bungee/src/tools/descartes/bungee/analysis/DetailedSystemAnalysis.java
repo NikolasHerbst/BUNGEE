@@ -54,7 +54,7 @@ public class DetailedSystemAnalysis extends SystemAnalysis {
 		File calibrationFolder = new File(new File (FileUtility.FILE_LOCATION,"calibration"),"detailed_"+
 		host.getHostName()+"_" + request.getProblemSize() +formatter.format(new Date()));
 		boolean aborted = false;
-		/*Bounds origBounds = cloudManagement.getScalingBounds(host.getHostName());*/
+		Bounds origBounds = cloudManagement.getScalingBounds(host.getHostName());
 		boolean cloudOk = true;
 		for (int cloudSize = 1; cloudSize <= maxResources && !aborted; cloudSize++)
 		{
@@ -80,9 +80,9 @@ public class DetailedSystemAnalysis extends SystemAnalysis {
 			System.out.println("Analysed system for up to " + mapping.getMaxAvailableResources() + 
 					" instances (intensity:" +mapping.getMaxIntensity()+ ")");
 		}
-		/*if (cloudManagement.setScalingBounds(host.getHostName(), origBounds)) {
+		if (cloudManagement.setScalingBounds(host.getHostName(), origBounds)) {
 			resWatcher.waitForResourceAmount(host.getHostName(), origBounds);
-		}*/
+		}
 		mapping.save(new File(calibrationFolder, "mapping.mapping"));
 		return mapping;
 	}
@@ -90,10 +90,10 @@ public class DetailedSystemAnalysis extends SystemAnalysis {
 	private boolean reconfigureCloud(Host host, int cloudSize) {
 		boolean cloudOk;
 		Bounds bounds = new Bounds(cloudSize,cloudSize);
-		//cloudOk = cloudManagement.setScalingBounds(host.getHostName(), bounds);
-				
+		cloudOk = cloudManagement.setScalingBounds(host.getHostName(), bounds);
+		if (cloudOk) {			
 			cloudOk = resWatcher.waitForResourceAmount(host.getHostName(), bounds);
-		
+		}
 		return cloudOk;
 	}
 }

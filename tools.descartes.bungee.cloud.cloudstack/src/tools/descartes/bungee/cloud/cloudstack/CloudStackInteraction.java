@@ -48,7 +48,7 @@ public class CloudStackInteraction implements CloudInfo {
 	 * @throws FileNotFoundException 
 	 * @throws Exception
 	 */
-	public CloudStackInteraction(String group) throws FileNotFoundException {
+	public CloudStackInteraction(String group){
 
 		Properties cloudProperties = FileUtility.loadProperties(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
 				
