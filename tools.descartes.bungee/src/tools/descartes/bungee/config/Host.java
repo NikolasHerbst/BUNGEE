@@ -38,6 +38,13 @@ public class Host {
 		this.port = port;
 		this.path = path;
 	}
+	
+	public Host(String hostName, int port) {
+		super();
+		this.hostName = hostName;
+		this.port = port;
+		this.path = "";
+	}
 
 	
 	
