@@ -51,6 +51,7 @@ public class CloudstackControllerImpl implements ResultListener {
 	private static SimpleDateFormat cloudstackFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private static SimpleDateFormat cloudstackOutputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 	private JobResult result = null;
+	private CloudStackInteraction csi;
 
 	public enum ScaleDirection {
 		UP("up"), DOWN("down");
@@ -179,6 +180,7 @@ public class CloudstackControllerImpl implements ResultListener {
 
 	public CloudstackControllerImpl(File propertiesFile) {
 		this(FileUtility.loadProperties(propertiesFile));
+		csi = new CloudStackInteraction(propertiesFile);
 	}
 
 	public List<String> getResourceIds(String ip) {
@@ -204,7 +206,7 @@ public class CloudstackControllerImpl implements ResultListener {
 
 	public int getNumberOfResources(String tag) {
 		try {
-			return new CloudStackInteraction("1").getNumberOfResources(tag);
+			return csi.getNumberOfResources(tag);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1077,8 +1079,8 @@ public class CloudstackControllerImpl implements ResultListener {
 		Date startDate = null;
 		Date endDate = null;
 		try {
-			startDate = format.parse("30.05.2016 19:00");
-			endDate = format.parse("30.05.2016 19:30");
+			startDate = format.parse("31.05.2016 00:00");
+			endDate = format.parse("31.05.2016 19:30");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

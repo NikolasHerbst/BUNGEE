@@ -3,7 +3,7 @@
 mappingFile=../calibration/mapping.mapping
 numberOfBenchmarkedResources=3
 relativePathes=true
-intensityModelFile=../model/DLIM_ibmtrx_weekday_simple_Trendlength1_noNoise_OneDay2.dlim
+intensityModelFile=../model/DLIM_ibmtrx_weekday_simple_Trendlength1_noNoise_OneDay.dlim
 hostPropertiesFile=host.prop
 requestPropertiesFile=request.prop
 warmUpSeconds=100

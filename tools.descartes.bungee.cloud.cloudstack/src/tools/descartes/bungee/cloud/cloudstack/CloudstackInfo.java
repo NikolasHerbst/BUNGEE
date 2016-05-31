@@ -25,11 +25,11 @@ import tools.descartes.bungee.cloud.ExtendedCloudInfo;
 
 public class CloudstackInfo implements ExtendedCloudInfo {
 
-	private CloudstackControllerImpl cloudstackImpl;
+	private CloudStackInteraction cloudstackImpl;
 	/**
 	 * @param cloudstackImpl
 	 */
-	public CloudstackInfo(CloudstackControllerImpl cloudstackImpl) {
+	public CloudstackInfo(CloudStackInteraction cloudstackImpl) {
 		this.cloudstackImpl = cloudstackImpl;
 	}
 

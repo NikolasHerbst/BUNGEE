@@ -26,17 +26,20 @@ public class Host {
 	private static final String HOSTNAME = "hostname";
 	private static final String PORT = "port";
 	private static final String PATH = "path";	
+	private static final String TAG = "tag";
 	
 	
 	private String hostName;
 	private int port;
 	private String path;
+	private String tag;
 	
-	public Host(String hostName, int port, String path) {
+	public Host(String hostName, int port, String path, String tag) {
 		super();
 		this.hostName = hostName;
 		this.port = port;
 		this.path = path;
+		this.tag = tag;
 	}
 	
 	public Host(String hostName, int port) {
@@ -44,10 +47,19 @@ public class Host {
 		this.hostName = hostName;
 		this.port = port;
 		this.path = "";
+		this.tag = "";
 	}
 
 	
 	
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
 	public String getPath() {
 		return path;
 	}
@@ -79,7 +91,7 @@ public class Host {
 	public static Host load(File file)
 	{
 		Properties hostProperties = FileUtility.loadProperties(file);
-		return new Host(hostProperties.getProperty(HOSTNAME), Integer.parseInt(hostProperties.getProperty(PORT)), hostProperties.getProperty(PATH));
+		return new Host(hostProperties.getProperty(HOSTNAME), Integer.parseInt(hostProperties.getProperty(PORT)), hostProperties.getProperty(PATH), hostProperties.getProperty(TAG));
 	}
 	
 	public void save(File file)
@@ -87,6 +99,8 @@ public class Host {
 		Properties hostProperties = new Properties();
 		hostProperties.setProperty(HOSTNAME, hostName);
 		hostProperties.setProperty(PORT, Integer.toString(port));
+		hostProperties.setProperty(PATH, path);
+		hostProperties.setProperty(TAG, tag);
 		FileUtility.saveProperties(hostProperties, file);
 	}
 }

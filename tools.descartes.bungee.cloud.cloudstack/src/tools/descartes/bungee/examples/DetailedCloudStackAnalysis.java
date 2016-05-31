@@ -56,7 +56,7 @@ public class DetailedCloudStackAnalysis {
 		
 		
 		//SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
-		SystemAnalysis analysis = new DetailedSystemAnalysisWithoutLoadBalancer(jMeter, cloudManagement);
+		SystemAnalysis analysis = new DetailedSystemAnalysisWithoutLoadBalancer(jMeter, cloudManagement, new File(FileUtility.FILE_LOCATION,"propertyFiles/cloudstack.prop"));
 		
 		//host.setHostName("10.1.1.10");
 		

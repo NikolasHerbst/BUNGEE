@@ -60,10 +60,10 @@ public class MeasurementRunner {
 		// add warm up period at beginning of model
 		loadProfile = new LoadProfileWithWarmUp(loadProfile, warmUpSeconds);	
 		
-		int initalNumberOfGuests = cloudInfo.getNumberOfResources("bungee");
+		int initalNumberOfGuests = cloudInfo.getNumberOfResources(host.getTag());
 		System.out.println("Inital number of guests: " + initalNumberOfGuests);
 		
-		monitor.startMonitoring("bungee");
+		monitor.startMonitoring(host.getTag());
 		RunResult runResult = runJMeter(measurementFolder, loadProfile, host, request, warmUpSeconds);
 		monitor.stopMonitoring();
 		

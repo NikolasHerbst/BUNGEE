@@ -3,3 +3,4 @@
 hostname=10.1.220.20
 port=8080
 path=/tools.descartes.bungee.Servlet/BungeeServlet
+tag=bungee

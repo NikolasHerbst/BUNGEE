@@ -4,3 +4,5 @@ apiURL=http\://10.1.1.10\:8080/client/api
 serviceofferingID=08ce27e0-4b12-47f0-a9ca-872829714e10
 templateID=c166e952-c746-4d1e-a0f4-8c59bc6e8501
 zoneID=7f889710-d523-4719-9930-94f0f722e9a6
+group=1
+username=paaem

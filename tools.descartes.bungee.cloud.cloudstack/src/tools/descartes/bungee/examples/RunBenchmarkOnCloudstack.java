@@ -19,6 +19,7 @@ package tools.descartes.bungee.examples;
 import java.io.File;
 
 import tools.descartes.bungee.cloud.ExtendedCloudInfo;
+import tools.descartes.bungee.cloud.cloudstack.CloudStackInteraction;
 import tools.descartes.bungee.cloud.cloudstack.CloudstackControllerImpl;
 import tools.descartes.bungee.cloud.cloudstack.CloudstackInfo;
 import tools.descartes.bungee.examples.RunBenchmark;
@@ -26,7 +27,7 @@ import tools.descartes.bungee.utils.FileUtility;
 
 public class RunBenchmarkOnCloudstack {
 	private static File fileLocation = FileUtility.FILE_LOCATION;
-	private static ExtendedCloudInfo cloud = new  CloudstackInfo(new CloudstackControllerImpl(new File(fileLocation,"propertyFiles/cloudstack.prop")));
+	private static ExtendedCloudInfo cloud = new  CloudstackInfo(new CloudStackInteraction(new File(fileLocation,"propertyFiles/cloudstack.prop")));
 	
 	public static void main(String[] args) {
 		File measurementConfigFile  = new File(fileLocation,"propertyFiles/measurement.prop");

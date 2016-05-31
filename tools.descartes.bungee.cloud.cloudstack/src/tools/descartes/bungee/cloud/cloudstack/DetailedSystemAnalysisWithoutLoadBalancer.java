@@ -44,11 +44,11 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 	private int startIntensity = 20;
 	private CloudStackInteraction cli;
 
-	public DetailedSystemAnalysisWithoutLoadBalancer(JMeterController jMeter, CloudManagement cloudManagement) {
+	public DetailedSystemAnalysisWithoutLoadBalancer(JMeterController jMeter, CloudManagement cloudManagement, File propertyFile) {
 		this.search = new BinaryIntensitySearch(jMeter);
 		this.cloudManagement = cloudManagement;
 		this.resWatcher = new ResourceWatch(cloudManagement);
-		this.cli = new CloudStackInteraction("1");
+		this.cli = new CloudStackInteraction(propertyFile);
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 		
 		boolean cloudOk = true;
 		for (int cloudSize = 1; cloudSize <= maxResources && !aborted; cloudSize++) {
-			cloudOk = reconfigureCloud(cloudSize);
+			cloudOk = reconfigureCloud(cloudSize, host);
 			File cloudSizeFolder = new File(calibrationFolder, Integer.toString(cloudSize) + "_Instances");
 			if (cloudOk) {
 				int intensity = search.searchIntensity(host, request, startWith, cloudSizeFolder, slos);
@@ -90,16 +90,16 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 		return mapping;
 	}
 
-	private boolean reconfigureCloud(int cloudSize) {
+	private boolean reconfigureCloud(int cloudSize, Host host) {
 
 		Bounds bounds = new Bounds(cloudSize, cloudSize);
 		try {
-			cli.startInstances(cloudSize, "bungee");
+			cli.startInstances(cloudSize, host.getTag());
 
 		} catch (Exception e) {
 			return false;
 		}
-		boolean cloudOk = resWatcher.waitForResourceAmount("bungee", bounds);
+		boolean cloudOk = resWatcher.waitForResourceAmount(host.getTag(), bounds);
 
 		return cloudOk;
 	}
