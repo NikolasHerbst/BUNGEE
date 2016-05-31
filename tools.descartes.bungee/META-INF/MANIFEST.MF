@@ -13,6 +13,7 @@ Export-Package:
  org.apache.commons.math3.stat.descriptive,
  tools.descartes.bungee.allocation,
  tools.descartes.bungee.analysis,
+ tools.descartes.bungee.analysis.intensitysearch,
  tools.descartes.bungee.calibration,
  tools.descartes.bungee.cloud,
  tools.descartes.bungee.config,

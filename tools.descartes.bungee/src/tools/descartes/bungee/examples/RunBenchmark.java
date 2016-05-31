@@ -42,7 +42,7 @@ public class RunBenchmark {
 		ResourceWatch watcher = new ResourceWatch(cloud);
 		MeasurementConfig config = MeasurementConfig.load(configFile);
 		for (int i = 1; i <= loops; i++) {
-			if (watcher.waitForResourceAmount(config.getHost().getHostName(), new Bounds(1,1))) {
+			if (watcher.waitForResourceAmount("bungee", new Bounds(1,1))) {
 				// create measurement folder
 				File measurementFolder = createMeasurementFolder(fileLocation, configFile);
 				runBenchmark(cloud, measurementFolder, config);

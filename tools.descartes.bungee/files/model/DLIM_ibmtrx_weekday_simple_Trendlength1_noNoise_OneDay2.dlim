@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1" name="DLIM_ibmtrx_weekday_simple_Trendlength1_noNoise" terminateAfterTime="508.5" terminateAfterLoops="1" firstIterationEnd="2.0" loopDuration="2.0" finalDuration="2.0">
+  <sequenceFunctionContainers name="seasonal1" duration="2.0" firstIterationEnd="2.0">
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="369.0" functionOutputAtEnd="819.0"/>
+  </sequenceFunctionContainers>
+</tools.descartes.dlim:Sequence>
