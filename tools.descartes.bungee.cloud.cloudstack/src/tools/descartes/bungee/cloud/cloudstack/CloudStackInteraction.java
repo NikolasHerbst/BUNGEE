@@ -60,6 +60,7 @@ public class CloudStackInteraction implements CloudInfo {
 	private String zoneid;
 	private String group;
 	private String username;
+	private CloudstackControllerImpl cci;
 
 	/**
 	 * Creates a CloudStackInteraction instance
@@ -82,6 +83,7 @@ public class CloudStackInteraction implements CloudInfo {
 		this.group = cloudProperties.getProperty("group");
 		this.username = cloudProperties.getProperty("username");
 		this.client = new CloudStackAPI(apiURL, secret, apikey);
+		this.cci = new CloudstackControllerImpl(file);
 
 	}
 
@@ -307,6 +309,9 @@ public class CloudStackInteraction implements CloudInfo {
 		ArrayList<VirtualMachine> vms = getAllVms(tag, STOPPED);
 		System.out.println("stopped instances: " + vms.size());
 		System.out.println("required instances: " + requiredSize);
+		if(requiredSize < 0){
+			stopInstances(-requiredSize, tag);
+		}
 		if (vms.size() > requiredSize) {
 			for (int i = 0; i < requiredSize; i++) {
 				startVM(vms.get(i).getId());
@@ -328,7 +333,7 @@ public class CloudStackInteraction implements CloudInfo {
 	 */
 	public void stopInstances(int amount, String tag) throws Exception {
 		int currentSize = getNumberOfResources(tag);
-		System.out.println("running instances: " + currentSize);
+		//System.out.println("running instances: " + currentSize);
 		ArrayList<VirtualMachine> vms = getAllVms(tag, RUNNING);
 		if (vms.size() > amount) {
 			for (int i = 0; i < amount; i++) {
@@ -427,10 +432,32 @@ public class CloudStackInteraction implements CloudInfo {
 		return property_value;
 	}
 
+	
+
+	public Bounds getScalingBounds(String hostName) {
+		return cci.getScalingBounds(hostName);
+	}
+
+	public void disableAutoScaleGroup(String hostName) {
+		cci.disableAutoScaleGroup(hostName);
+	}
+
+	public boolean updateAutoScaleVMGroup(String hostName, int min, int max) {
+		return cci.updateAutoScaleVMGroup(hostName, min, max);
+	}
+
+	public void enableAutoScaleGroup(String hostName) {
+		cci.enableAutoScaleGroup(hostName);
+	}
+
+	
 	public static void main(String[] args) throws Exception {
 		CloudStackInteraction management;
 
 		management = new CloudStackInteraction(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
+		
+		management.startInstances(1, "bungee");
+		
 		// System.out.println("running instances:"+management.getNumberOfResources("Bungee"));
 
 		// management.deployVM("Test123");
@@ -441,7 +468,7 @@ public class CloudStackInteraction implements CloudInfo {
 		// management.startInstances(4, "Bungee");
 		//management.stopInstances(1, "Bungee");
 		// System.out.println("finish");
-		DateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+		/*DateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 		Date startDate = null;
 		Date endDate = null;
 		try {
@@ -452,8 +479,7 @@ public class CloudStackInteraction implements CloudInfo {
 			e.printStackTrace();
 		}
 
-		management.getResourceAllocations(startDate, endDate, "");
+		management.getResourceAllocations(startDate, endDate, "");*/
 
 	}
-
 }
