@@ -44,7 +44,7 @@ public class DetailedCloudStackAnalysis {
 		
 		int maxResources = 5;
 		double percent = 95;
-		int responseTime = 500;
+		int responseTime = 2100;
 
 		ServiceLevelObjective slo = new ResponsetimePercentileSLO(percent, responseTime);
 

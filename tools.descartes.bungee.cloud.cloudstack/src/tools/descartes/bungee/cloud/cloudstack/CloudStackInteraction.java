@@ -312,7 +312,7 @@ public class CloudStackInteraction implements CloudInfo {
 		if(requiredSize < 0){
 			stopInstances(-requiredSize, tag);
 		}
-		if (vms.size() > requiredSize) {
+		if (vms.size() >= requiredSize) {
 			for (int i = 0; i < requiredSize; i++) {
 				startVM(vms.get(i).getId());
 			}
@@ -456,9 +456,9 @@ public class CloudStackInteraction implements CloudInfo {
 
 		management = new CloudStackInteraction(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
 		
-		management.startInstances(1, "bungee");
+		//management.startInstances(5, "bungee");
 		
-		// System.out.println("running instances:"+management.getNumberOfResources("Bungee"));
+		 System.out.println("running instances:"+management.getNumberOfResources("Bungee"));
 
 		// management.deployVM("Test123");
 		// management.destroyVM("29f2d2db-0c8d-44ed-8fe9-f6fac31307cb", true);

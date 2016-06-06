@@ -41,7 +41,7 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 	private CloudManagement cloudManagement;
 	private ResourceWatch resWatcher;
 
-	private int startIntensity = 20;
+	private int startIntensity = 40;
 	private CloudStackInteraction cli;
 
 	public DetailedSystemAnalysisWithoutLoadBalancer(JMeterController jMeter, CloudManagement cloudManagement, File propertyFile) {
@@ -59,7 +59,7 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 		File calibrationFolder = new File(new File(FileUtility.FILE_LOCATION, "calibration"),
 				"detailed_" + host.getHostName() + "_" + request.getProblemSize() + formatter.format(new Date()));
 		boolean aborted = false;
-		
+
 		boolean cloudOk = true;
 		for (int cloudSize = 1; cloudSize <= maxResources && !aborted; cloudSize++) {
 			cloudOk = reconfigureCloud(cloudSize, host);
