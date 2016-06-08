@@ -1,5 +1,5 @@
 /*******************************************************************************
-Copyright 2016 André Bauer, Nikolas Herbst
+Copyright 2016 AndrÃ© Bauer, Nikolas Herbst
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -335,7 +335,7 @@ public class CloudStackInteraction implements CloudInfo {
 		int currentSize = getNumberOfResources(tag);
 		//System.out.println("running instances: " + currentSize);
 		ArrayList<VirtualMachine> vms = getAllVms(tag, RUNNING);
-		if (vms.size() > amount) {
+		if (vms.size() >= amount) {
 			for (int i = 0; i < amount; i++) {
 				stopVM(vms.get(i).getId());
 			}
