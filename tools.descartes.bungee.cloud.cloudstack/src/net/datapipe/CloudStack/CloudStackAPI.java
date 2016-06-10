@@ -191,4 +191,8 @@ public class CloudStackAPI extends CloudStack {
 	    return Request(arguments);
 	}
 
+	public Document listHosts(HashMap<String,String> optional) throws Exception{
+		LinkedList<NameValuePair> arguments = newQueryValues("listHosts",optional);
+	    return Request(arguments);
+	}
 }

@@ -22,11 +22,15 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
+
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -61,6 +65,10 @@ public class CloudStackInteraction implements CloudInfo {
 	private String group;
 	private String username;
 	private CloudstackControllerImpl cci;
+	private ArrayList<String> hostids; // Order from output:
+										// Sv5,Sv7,Sv4,Sv1,Sv3,Sv6,Sv2,Sv8
+	private SetOrder order;
+	private int index = 0;
 
 	/**
 	 * Creates a CloudStackInteraction instance
@@ -82,8 +90,25 @@ public class CloudStackInteraction implements CloudInfo {
 		this.zoneid = cloudProperties.getProperty("zoneID");
 		this.group = cloudProperties.getProperty("group");
 		this.username = cloudProperties.getProperty("username");
+		switch (cloudProperties.getProperty("setorder").toLowerCase()) {
+		case "roundrobin":
+			this.order = SetOrder.RoundRobin;
+			break;
+		case "fillhost":
+			this.order = SetOrder.FillHost;
+			break;
+		default:
+			this.order = SetOrder.None;
+			break;
+		}
+
 		this.client = new CloudStackAPI(apiURL, secret, apikey);
 		this.cci = new CloudstackControllerImpl(file);
+
+		/*this.hostids = getHostIds();
+
+		for (String id : hostids)
+			System.out.println(id);*/
 
 	}
 
@@ -192,6 +217,29 @@ public class CloudStackInteraction implements CloudInfo {
 	 */
 	public void startVM(String id) throws Exception {
 		client.startVirtualMachine(id);
+	}
+
+	public void startVMwithOrder(String id) throws Exception {
+		client.startVirtualMachine(id, getHost());
+	}
+
+	private String getHost() {
+		int host = 0;
+		switch (order) {
+		case RoundRobin:
+			index = (index + 1) % hostids.size();
+			host = index;
+			break;
+
+		case FillHost:
+			break;
+		default:
+			Random rd = new Random();
+			host = rd.nextInt(hostids.size());
+			break;
+		}
+		
+		return hostids.get(host);
 	}
 
 	/**
@@ -308,13 +356,26 @@ public class CloudStackInteraction implements CloudInfo {
 		int requiredSize = cloudSize - currentSize;
 		ArrayList<VirtualMachine> vms = getAllVms(tag, STOPPED);
 		System.out.println("stopped instances: " + vms.size());
+		if(requiredSize >= 0){
 		System.out.println("required instances: " + requiredSize);
-		if(requiredSize < 0){
+		} else {
+			System.out.println("instances to stop: " + (-requiredSize));
+		}
+		if (requiredSize < 0) {
 			stopInstances(-requiredSize, tag);
 		}
 		if (vms.size() >= requiredSize) {
 			for (int i = 0; i < requiredSize; i++) {
-				startVM(vms.get(i).getId());
+				startVM(vms.get(i).getId(),"db7ddc8d-06a7-4c59-a078-2eadf695d429");
+				/*switch (order) {
+				case None:
+					startVM(vms.get(i).getId());
+					break;
+				default:
+					startVMwithOrder(vms.get(i).getId());
+					break;
+				}*/
+
 			}
 		} else {
 			throw new IllegalArgumentException("Too less Instances");
@@ -333,7 +394,7 @@ public class CloudStackInteraction implements CloudInfo {
 	 */
 	public void stopInstances(int amount, String tag) throws Exception {
 		int currentSize = getNumberOfResources(tag);
-		//System.out.println("running instances: " + currentSize);
+		// System.out.println("running instances: " + currentSize);
 		ArrayList<VirtualMachine> vms = getAllVms(tag, RUNNING);
 		if (vms.size() >= amount) {
 			for (int i = 0; i < amount; i++) {
@@ -379,7 +440,32 @@ public class CloudStackInteraction implements CloudInfo {
 		return supply;
 	}
 
-	private  List<ResourceAllocation> getResourceAllocationFromReply(Document reply, Date start, Date end,
+	private ArrayList<String> getHostIds() {
+		ArrayList<String> list = new ArrayList<String>();
+		HashMap<String, String> options = new HashMap<>();
+		options.put("type", "Routing");
+		try {
+			Document document = client.listHosts(options);
+			XPathFactory factory = XPathFactory.newInstance();
+			XPath xpath = factory.newXPath();
+			XPathExpression expr;
+
+			expr = xpath.compile("//host");
+			NodeList item_list = (NodeList) expr.evaluate(document, XPathConstants.NODESET);
+			for (int i = item_list.getLength() - 1; i >= 0; i--) {
+				Node item = item_list.item(i);
+				String id = getPropertyValue(xpath, item, "id");
+				list.add(id);
+			}
+			Collections.reverse(list);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	private List<ResourceAllocation> getResourceAllocationFromReply(Document reply, Date start, Date end,
 			EventType type, EventState status) {
 		List<ResourceAllocation> allocations = new LinkedList<ResourceAllocation>();
 
@@ -432,8 +518,6 @@ public class CloudStackInteraction implements CloudInfo {
 		return property_value;
 	}
 
-	
-
 	public Bounds getScalingBounds(String hostName) {
 		return cci.getScalingBounds(hostName);
 	}
@@ -450,15 +534,16 @@ public class CloudStackInteraction implements CloudInfo {
 		cci.enableAutoScaleGroup(hostName);
 	}
 
-	
 	public static void main(String[] args) throws Exception {
 		CloudStackInteraction management;
 
 		management = new CloudStackInteraction(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
-		
-		//management.startInstances(5, "bungee");
-		
-		 System.out.println("running instances:"+management.getNumberOfResources("Bungee"));
+		ArrayList<VirtualMachine> list = management.getAllVms("bungee");
+		management.startInstances(0, "bungee");
+		// management.startInstances(5, "bungee");
+
+		// System.out.println("running instances:" +
+		// management.getNumberOfResources("Bungee"));
 
 		// management.deployVM("Test123");
 		// management.destroyVM("29f2d2db-0c8d-44ed-8fe9-f6fac31307cb", true);
@@ -466,20 +551,17 @@ public class CloudStackInteraction implements CloudInfo {
 		// management.startVM("5e6e2f1d-c3b2-45b9-9134-7c474c076e27");
 
 		// management.startInstances(4, "Bungee");
-		//management.stopInstances(1, "Bungee");
+		// management.stopInstances(1, "Bungee");
 		// System.out.println("finish");
-		/*DateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-		Date startDate = null;
-		Date endDate = null;
-		try {
-			startDate = format.parse("31.05.2016 00:00");
-			endDate = format.parse("31.05.2016 19:30");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		management.getResourceAllocations(startDate, endDate, "");*/
+		/*
+		 * DateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm"); Date
+		 * startDate = null; Date endDate = null; try { startDate =
+		 * format.parse("31.05.2016 00:00"); endDate = format.parse(
+		 * "31.05.2016 19:30"); } catch (ParseException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 * 
+		 * management.getResourceAllocations(startDate, endDate, "");
+		 */
 
 	}
 }

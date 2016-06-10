@@ -41,7 +41,7 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 	private CloudManagement cloudManagement;
 	private ResourceWatch resWatcher;
 
-	private int startIntensity = 40;
+	private int startIntensity = 10;
 	private CloudStackInteraction cli;
 
 	public DetailedSystemAnalysisWithoutLoadBalancer(JMeterController jMeter, CloudManagement cloudManagement, File propertyFile) {
@@ -66,7 +66,7 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 			File cloudSizeFolder = new File(calibrationFolder, Integer.toString(cloudSize) + "_Instances");
 			if (cloudOk) {
 				int intensity = search.searchIntensity(host, request, startWith, cloudSizeFolder, slos);
-				if (intensity != IntensitySearch.ABORTED && intensity > mapping.getMaxIntensity()) {
+				if (intensity != IntensitySearch.ABORTED && intensity >= mapping.getMaxIntensity()) {
 					System.out.println("Found maximum intensity for " + cloudSize + " resources: " + intensity);
 					mapping.addMaxIntensityForResourceAmount(intensity, cloudSize);
 					startWith = (int) ((intensity + mapping.getMaxIntensity(1)) * 0.6);

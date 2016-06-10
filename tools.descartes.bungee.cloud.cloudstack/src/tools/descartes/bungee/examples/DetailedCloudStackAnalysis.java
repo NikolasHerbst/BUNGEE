@@ -37,14 +37,14 @@ public class DetailedCloudStackAnalysis {
 	public static void main(String[] args) {
 		File jmeterPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/jmeter.prop");
 		//File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/bungeeservlet.prop");
-		File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/host.prop");
-		File requestPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/request.prop");
+		File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/host2.prop");
+		File requestPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/request2.prop");
 		File cloudStackPropsFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop");
 		File cloudSettingFile		= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudSettings.prop");
 		
-		int maxResources = 5;
+		int maxResources = 8;
 		double percent = 95;
-		int responseTime = 2100;
+		int responseTime = 2000;
 
 		ServiceLevelObjective slo = new ResponsetimePercentileSLO(percent, responseTime);
 

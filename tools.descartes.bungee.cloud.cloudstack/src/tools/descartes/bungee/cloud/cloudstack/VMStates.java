@@ -55,14 +55,14 @@ public class VMStates {
 
 		
 
-		String[] properties = new String[] { "id", "name", "cpunumber", "cpuused", "state" };
+		String[] properties = new String[] { "id", "name", "cpunumber", "cpuused", "state", "hostid" };
 		//System.out.println(String.format(formatheader, "id", "name", "ipaddress", "cpunumber", "cpuused", "state"));
 		//System.out.println("----------------------------------------------------------------------------------------------------------");
 
 		NodeList item_list = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
 		for (int i = 0; i < item_list.getLength(); i++) {
 			Node item = item_list.item(i);
-			String[] property_values = new String[6];
+			String[] property_values = new String[properties.length+1];
 			for (int j = 0; j < properties.length; j++) {
 				String property_name = properties[j];
 				XPathExpression xp_property = xpath.compile(property_name + "/text()");
@@ -74,7 +74,7 @@ public class VMStates {
 			Node item2 = nic.item(i);
 			String ipadd = "ipaddress";
 			XPathExpression xp_property2 = xpath.compile(ipadd + "/text()");
-			property_values[5] =(String) xp_property2.evaluate(item2, XPathConstants.STRING);
+			property_values[properties.length] =(String) xp_property2.evaluate(item2, XPathConstants.STRING);
 			VirtualMachine vm = new VirtualMachine(property_values);
 			//System.out.println(vm);
 			vms.add(vm);
