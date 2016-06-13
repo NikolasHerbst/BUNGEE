@@ -55,7 +55,7 @@ public class VMStates {
 
 		
 
-		String[] properties = new String[] { "id", "name", "cpunumber", "cpuused", "state", "hostid" };
+		String[] properties = new String[] { "id", "name", "cpunumber", "cpuused", "state", "hostid", "memory" };
 		//System.out.println(String.format(formatheader, "id", "name", "ipaddress", "cpunumber", "cpuused", "state"));
 		//System.out.println("----------------------------------------------------------------------------------------------------------");
 

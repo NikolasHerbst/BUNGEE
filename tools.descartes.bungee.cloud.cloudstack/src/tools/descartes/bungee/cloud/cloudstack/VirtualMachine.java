@@ -31,6 +31,7 @@ public class VirtualMachine {
 	private String state;
 	private String ipaddress;
 	private String hostid;
+	private int memory;
 
 	public VirtualMachine(String[] properties) {
 		
@@ -40,7 +41,9 @@ public class VirtualMachine {
 		setCpuused(properties[3]);
 		setState(properties[4]);
 		setHostid(properties[5]);
-		setIpaddress(properties[6]);
+		setMemory(properties[6]);
+		setIpaddress(properties[7]);
+		
 
 	}
 
@@ -114,6 +117,20 @@ public class VirtualMachine {
 	public void setHostid(String hostid) {
 		this.hostid = hostid;
 	}
+
+	public int getMemory() {
+		return memory;
+	}
+
+	public void setMemory(String memory) {
+		if(memory.equals("")) memory = "0";
+		this.memory = Integer.parseInt(memory);
+	}
+	
+	public void setMemory(int memory) {
+		this.memory = memory;
+	}
+	
 	
 	
 

@@ -65,8 +65,10 @@ public class CloudStackInteraction implements CloudInfo {
 	private String group;
 	private String username;
 	private CloudstackControllerImpl cci;
+	private static final int maxMemoryAllocation = 24000;
 	private ArrayList<String> hostids; // Order from output:
 										// Sv5,Sv7,Sv4,Sv1,Sv3,Sv6,Sv2,Sv8
+	private HashMap<String, Integer> hostMemoryLoad;
 	private SetOrder order;
 	private int index = 0;
 
@@ -105,11 +107,32 @@ public class CloudStackInteraction implements CloudInfo {
 		this.client = new CloudStackAPI(apiURL, secret, apikey);
 		this.cci = new CloudstackControllerImpl(file);
 
-		/*this.hostids = getHostIds();
+		this.hostids = getHostIds();
+		this.hostMemoryLoad = new HashMap<String, Integer>();
+		for (int i = 0; i < hostids.size(); i++) {
+			hostMemoryLoad.put(hostids.get(i), 0);
+		}
+		updateMemory();
 
-		for (String id : hostids)
-			System.out.println(id);*/
+	}
 
+	private void updateMemory() {
+		ArrayList<VirtualMachine> vms = null;
+		try {
+			vms = getAllRunningVms();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (VirtualMachine vm : vms) {
+
+			updateHostMemory(vm.getHostid(), vm.getMemory());
+
+		}
+	}
+
+	private void updateHostMemory(String hostid, int memory) {
+		memory = hostMemoryLoad.get(hostid) + memory;
+		hostMemoryLoad.replace(hostid, memory);
 	}
 
 	private enum EventState {
@@ -219,27 +242,43 @@ public class CloudStackInteraction implements CloudInfo {
 		client.startVirtualMachine(id);
 	}
 
-	public void startVMwithOrder(String id) throws Exception {
-		client.startVirtualMachine(id, getHost());
+	public void startVMwithOrder(VirtualMachine vm) throws Exception {
+		updateMemory();
+		String hostid = getHost(vm);
+		if (hostid.equals("")) {
+			client.startVirtualMachine(vm.getId());
+		} else {
+			client.startVirtualMachine(vm.getId(), hostid);
+		}
 	}
 
-	private String getHost() {
-		int host = 0;
+	private String getHost(VirtualMachine vm) {
+		boolean check = false;
+
 		switch (order) {
 		case RoundRobin:
 			index = (index + 1) % hostids.size();
-			host = index;
 			break;
 
 		case FillHost:
 			break;
 		default:
-			Random rd = new Random();
-			host = rd.nextInt(hostids.size());
-			break;
+			return "";
 		}
-		
-		return hostids.get(host);
+		int counter = 0;
+		while (!check) {
+
+			if (hostMemoryLoad.get(hostids.get(index)) + vm.getMemory() <= maxMemoryAllocation) {
+				check = true;
+			} else {
+				if (counter > hostids.size()) {
+					return "";
+				}
+				index = (index + 1) % hostids.size();
+				counter++;
+			}
+		}
+		return hostids.get(index);
 	}
 
 	/**
@@ -288,7 +327,7 @@ public class CloudStackInteraction implements CloudInfo {
 	 * 
 	 * @param tag
 	 *            of the VMs
-	 * @return ArrayList of VMs
+	 * @return ArrayList of VMs according the group
 	 * @throws Exception
 	 */
 	public ArrayList<VirtualMachine> getAllVms(String tag) throws Exception {
@@ -303,7 +342,7 @@ public class CloudStackInteraction implements CloudInfo {
 	 *            of the VMs
 	 * @param state
 	 *            of the VMs
-	 * @return List of VMs
+	 * @return List of VMs according the group
 	 * @throws Exception
 	 */
 	public ArrayList<VirtualMachine> getAllVms(String tag, String state) throws Exception {
@@ -315,6 +354,29 @@ public class CloudStackInteraction implements CloudInfo {
 			options.put("state", state);
 		}
 		options.put("groupid", group);
+		Document doc = client.listVirtualMachines(options);
+
+		ArrayList<VirtualMachine> vms = VMStates.read(doc);
+
+		return vms;
+	}
+
+	/**
+	 * https://cloudstack.apache.org/api/apidocs-4.8/root_admin/
+	 * listVirtualMachines.html
+	 * 
+	 * @param tag
+	 *            of the VMs
+	 * @param state
+	 *            of the VMs
+	 * @return List of all running VMs independent from the group
+	 * @throws Exception
+	 */
+	private ArrayList<VirtualMachine> getAllRunningVms() throws Exception {
+		HashMap<String, String> options = new HashMap<>();
+
+		options.put("state", RUNNING);
+
 		Document doc = client.listVirtualMachines(options);
 
 		ArrayList<VirtualMachine> vms = VMStates.read(doc);
@@ -356,8 +418,8 @@ public class CloudStackInteraction implements CloudInfo {
 		int requiredSize = cloudSize - currentSize;
 		ArrayList<VirtualMachine> vms = getAllVms(tag, STOPPED);
 		System.out.println("stopped instances: " + vms.size());
-		if(requiredSize >= 0){
-		System.out.println("required instances: " + requiredSize);
+		if (requiredSize >= 0) {
+			System.out.println("required instances: " + requiredSize);
 		} else {
 			System.out.println("instances to stop: " + (-requiredSize));
 		}
@@ -366,15 +428,12 @@ public class CloudStackInteraction implements CloudInfo {
 		}
 		if (vms.size() >= requiredSize) {
 			for (int i = 0; i < requiredSize; i++) {
-				startVM(vms.get(i).getId(),"db7ddc8d-06a7-4c59-a078-2eadf695d429");
-				/*switch (order) {
-				case None:
-					startVM(vms.get(i).getId());
-					break;
-				default:
-					startVMwithOrder(vms.get(i).getId());
-					break;
-				}*/
+				startVM(vms.get(i).getId(), "db7ddc8d-06a7-4c59-a078-2eadf695d429");
+				/*
+				 * switch (order) { case None: startVM(vms.get(i).getId());
+				 * break; default: startVMwithOrder(vms.get(i).getId()); break;
+				 * }
+				 */
 
 			}
 		} else {
@@ -538,8 +597,25 @@ public class CloudStackInteraction implements CloudInfo {
 		CloudStackInteraction management;
 
 		management = new CloudStackInteraction(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
-		ArrayList<VirtualMachine> list = management.getAllVms("bungee");
-		management.startInstances(0, "bungee");
+
+		/*ArrayList<VirtualMachine> vms = new ArrayList<>();
+		String[] properties = new String[] { "", "", "2", "", "", "", "3000", "" };
+		for (int i = 0; i < 32; i++) {
+			VirtualMachine vm = new VirtualMachine(properties);
+			vms.add(vm);
+		}
+		management.order = SetOrder.RoundRobin;
+		for (VirtualMachine vm : vms) {
+			String host = management.getHost(vm);
+			System.out.println(host);
+			management.updateHostMemory(host, vm.getMemory());
+		}*/
+
+		// ArrayList<VirtualMachine> list = management.getAllVms("bungee");
+		// management.startInstances(0, "bungee");
+		/*
+		 * for(VirtualMachine vm: list){ System.out.println(vm.getMemory()); }
+		 */
 		// management.startInstances(5, "bungee");
 
 		// System.out.println("running instances:" +
