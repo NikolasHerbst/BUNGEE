@@ -30,8 +30,8 @@ import org.w3c.dom.NodeList;
 
 public class VMStates {
 
-	public static String formatheader = "%-36s   %-20s   %-12s   %-9s   %-7s   %-10s";
-	public static String format = "%-36s   %-20s   %-12s   %-9s   %-7.2f   %-10s";
+	public static String formatheader = "%-36s   %-25s   %-12s   %-9s   %-7s   %-10s";
+	public static String format = "%-36s   %-25s   %-12s   %-9s   %-7.2f   %-10s";
 
 	/**
 	 * Returns a ArrayList of VMs

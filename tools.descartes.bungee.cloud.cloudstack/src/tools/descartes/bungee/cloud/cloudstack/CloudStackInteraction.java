@@ -18,19 +18,15 @@ package tools.descartes.bungee.cloud.cloudstack;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-import java.util.Random;
-
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -46,8 +42,6 @@ import tools.descartes.bungee.allocation.ResourceAllocation;
 import tools.descartes.bungee.allocation.SupplySeries;
 import tools.descartes.bungee.cloud.Bounds;
 import tools.descartes.bungee.cloud.CloudInfo;
-import tools.descartes.bungee.cloud.cloudstack.CloudstackControllerImpl.CSAutoScaleVMGroup;
-import tools.descartes.bungee.cloud.cloudstack.CloudstackControllerImpl.CSLB;
 import tools.descartes.bungee.utils.DateUtility;
 import tools.descartes.bungee.utils.FileUtility;
 
@@ -65,12 +59,14 @@ public class CloudStackInteraction implements CloudInfo {
 	private String group;
 	private String username;
 	private CloudstackControllerImpl cci;
-	private static final int maxMemoryAllocation = 24000;
+
 	private ArrayList<String> hostids; // Order from output:
 										// Sv5,Sv7,Sv4,Sv1,Sv3,Sv6,Sv2,Sv8
-	private HashMap<String, Integer> hostMemoryLoad;
+
 	private SetOrder order;
 	private int index = 0;
+	private HashMap<String, Host> hostlist;
+	private ArrayList<String> systemVmonHostids;
 
 	/**
 	 * Creates a CloudStackInteraction instance
@@ -108,31 +104,95 @@ public class CloudStackInteraction implements CloudInfo {
 		this.cci = new CloudstackControllerImpl(file);
 
 		this.hostids = getHostIds();
-		this.hostMemoryLoad = new HashMap<String, Integer>();
-		for (int i = 0; i < hostids.size(); i++) {
-			hostMemoryLoad.put(hostids.get(i), 0);
-		}
-		updateMemory();
+		//change order of hosts 8, 6, 7, 4, 5, 3, 1, 2
+		Collections.sort(hostids);
+		Collections.reverse(hostids);
+		updateHostCPUs();
 
 	}
 
-	private void updateMemory() {
+	public void updateServiceOfferings(ArrayList<VirtualMachine> vms, String serviceofferingid) throws Exception {
+		for (VirtualMachine vm : vms) {
+			client.changeServiceForVirtualMachine(vm.getId(), serviceofferingid);
+		}
+	}
+
+	private void updateHostCPUs() {
+		if (hostlist == null) {
+			this.hostlist = new HashMap<String, Host>();
+
+			try {
+
+				systemVmonHostids = new ArrayList<String>();
+				systemVmonHostids.addAll(extractHostIDfromSystemRouters());
+				systemVmonHostids.addAll(extractHostIDfromSystemVM());
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} else {
+			hostlist.clear();
+		}
 		ArrayList<VirtualMachine> vms = null;
 		try {
 			vms = getAllRunningVms();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		for (int i = 0; i < hostids.size(); i++) {
+			hostlist.put(hostids.get(i), new Host(hostids.get(i)));
+		}
+		for (String id : systemVmonHostids) {
+			hostlist.get(id).addCPU(1);
+		}
 		for (VirtualMachine vm : vms) {
-
-			updateHostMemory(vm.getHostid(), vm.getMemory());
+			hostlist.get(vm.getHostid()).addVM(vm);
 
 		}
 	}
 
-	private void updateHostMemory(String hostid, int memory) {
-		memory = hostMemoryLoad.get(hostid) + memory;
-		hostMemoryLoad.replace(hostid, memory);
+	private ArrayList<String> extractHostIDfromSystemVM() throws Exception {
+		ArrayList<String> ids = new ArrayList<String>();
+		HashMap<String, String> optional = new HashMap<String, String>();
+		optional.put("listall", "true");
+		Document document = client.listSystemVms(optional);
+		XPathFactory factory = XPathFactory.newInstance();
+		XPath xpath = factory.newXPath();
+		XPathExpression expr;
+
+		expr = xpath.compile("//systemvm");
+		NodeList item_list = (NodeList) expr.evaluate(document, XPathConstants.NODESET);
+		for (int i = item_list.getLength() - 1; i >= 0; i--) {
+			Node item = item_list.item(i);
+			String id = getPropertyValue(xpath, item, "hostid");
+			ids.add(id);
+		}
+
+		return ids;
+	}
+
+	private ArrayList<String> extractHostIDfromSystemRouters() throws Exception {
+		ArrayList<String> ids = new ArrayList<String>();
+		HashMap<String, String> optional = new HashMap<String, String>();
+		optional.put("listall", "true");
+		Document document = client.listRouters(optional);
+		XPathFactory factory = XPathFactory.newInstance();
+		XPath xpath = factory.newXPath();
+		XPathExpression expr;
+
+		expr = xpath.compile("//router");
+
+		NodeList item_list = (NodeList) expr.evaluate(document, XPathConstants.NODESET);
+		for (int i = item_list.getLength() - 1; i >= 0; i--) {
+			Node item = item_list.item(i);
+			String id = getPropertyValue(xpath, item, "hostid");
+
+			ids.add(id);
+		}
+
+		return ids;
 	}
 
 	private enum EventState {
@@ -243,7 +303,7 @@ public class CloudStackInteraction implements CloudInfo {
 	}
 
 	public void startVMwithOrder(VirtualMachine vm) throws Exception {
-		updateMemory();
+		updateHostCPUs();
 		String hostid = getHost(vm);
 		if (hostid.equals("")) {
 			client.startVirtualMachine(vm.getId());
@@ -268,7 +328,8 @@ public class CloudStackInteraction implements CloudInfo {
 		int counter = 0;
 		while (!check) {
 
-			if (hostMemoryLoad.get(hostids.get(index)) + vm.getMemory() <= maxMemoryAllocation) {
+			if (hostlist.get(hostids.get(index)).getMemory() - vm.getMemory() > 0
+					&& hostlist.get(hostids.get(index)).getCPU() - vm.getCpunumber() >= 0) {
 				check = true;
 			} else {
 				if (counter > hostids.size()) {
@@ -428,7 +489,8 @@ public class CloudStackInteraction implements CloudInfo {
 		}
 		if (vms.size() >= requiredSize) {
 			for (int i = 0; i < requiredSize; i++) {
-				startVM(vms.get(i).getId(), "db7ddc8d-06a7-4c59-a078-2eadf695d429");
+				//startVM(vms.get(i).getId(), "db7ddc8d-06a7-4c59-a078-2eadf695d429");
+				startVMwithOrder(vms.get(i));
 				/*
 				 * switch (order) { case None: startVM(vms.get(i).getId());
 				 * break; default: startVMwithOrder(vms.get(i).getId()); break;
@@ -597,26 +659,45 @@ public class CloudStackInteraction implements CloudInfo {
 		CloudStackInteraction management;
 
 		management = new CloudStackInteraction(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
+		//System.out.println(management.order);
+		
+		  /* management.updateHostCPUs();
+		   * for(String id : management.hostids){
+		  System.out.println(id); }*/
+		 
+
+		/*
+		 * for(int i = 1; i < 17; i++){ HashMap<String, String> options = new
+		 * HashMap<>(); options.put("name", "bungeesmall"+i);
+		 * options.put("group", "1"); management.client.deployVirtualMachine(
+		 * "0d5e145a-8da4-4c5b-90ba-e70e64a878a3",
+		 * "45005574-ed22-4fc4-a5c5-860253932ab9", management.zoneid, options);
+		 * }
+		 */
 
 		/*ArrayList<VirtualMachine> vms = new ArrayList<>();
 		String[] properties = new String[] { "", "", "2", "", "", "", "3000", "" };
-		for (int i = 0; i < 32; i++) {
+		for (int i = 0; i < 28; i++) {
 			VirtualMachine vm = new VirtualMachine(properties);
 			vms.add(vm);
 		}
-		management.order = SetOrder.RoundRobin;
+		management.order = SetOrder.FillHost;
 		for (VirtualMachine vm : vms) {
 			String host = management.getHost(vm);
-			System.out.println(host);
-			management.updateHostMemory(host, vm.getMemory());
+			management.hostlist.get(host).addVM(vm);
+			System.out.println(management.hostlist.get(host));
 		}*/
+		// 5 -> 7 -> 4
 
-		// ArrayList<VirtualMachine> list = management.getAllVms("bungee");
-		// management.startInstances(0, "bungee");
-		/*
-		 * for(VirtualMachine vm: list){ System.out.println(vm.getMemory()); }
-		 */
-		// management.startInstances(5, "bungee");
+		//management.startInstances(0, "bungeesmall");
+		// ArrayList<VirtualMachine> list = management.getAllVms("bungeesmall");
+		// management.updateServiceOfferings(list,
+		// "f0c0d631-ad4d-462a-9f0c-24e3b17dd16b");
+		// for(VirtualMachine vm: list){ System.out.println(vm); }
+
+		management.startInstances(0, "bungeesmall");
+
+		// management.stopAllVMs(management.getAllRunningVms());
 
 		// System.out.println("running instances:" +
 		// management.getNumberOfResources("Bungee"));

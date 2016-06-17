@@ -42,7 +42,7 @@ public class CloudStack {
   // -----------------------------------------------------------------------------------------------------
   // public api starts here
 
-  // Section: Virtual Machine
+  // Section: Virtual Machine  
   public Document deployVirtualMachine(String serviceofferingid, String templateid, String zoneid, HashMap<String,String> optional) throws Exception {
     LinkedList<NameValuePair> arguments = newQueryValues("deployVirtualMachine",optional);
     arguments.add(new NameValuePair("serviceofferingid", serviceofferingid));

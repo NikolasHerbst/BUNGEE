@@ -141,9 +141,9 @@ public class JMeterController {
 				               + " -p " + enquote(properyFile.toString())
 							   + " -JtimestampFile=" + enquote(timestampFile.toString())
 							   + " -JoutputFile=" + enquote(outputFile.toString())
-							   + " -Jhostname=" + hostname
-							   + " -Jport=" + port
-							   + " -Jpath=" + path
+							  // + " -Jhostname=" + hostname
+							  // + " -Jport=" + port
+							  // + " -Jpath=" + path
 				               + " -JnumberOfThreads=" + threads
 				               + " -JproblemSize=" + problemSize
 							   + " -Jtimeout=" + timeout ;

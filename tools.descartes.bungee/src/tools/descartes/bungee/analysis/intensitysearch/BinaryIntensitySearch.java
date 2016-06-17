@@ -90,6 +90,12 @@ public class BinaryIntensitySearch implements IntensitySearch{
 				} else {
 					System.out.println("Run was not logged completely. Try again...");
 				}
+				try {
+					Thread.sleep(1000*30);
+					System.out.println("Wait for cool down");
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 
 			if (utilizableRun && result.passedSanityCheck())
