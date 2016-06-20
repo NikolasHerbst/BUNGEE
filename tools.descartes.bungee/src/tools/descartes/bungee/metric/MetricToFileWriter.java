@@ -31,7 +31,7 @@ import tools.descartes.bungee.utils.FileUtility;
 
 public class MetricToFileWriter {
 	public static List<Class<? extends Metric>> STD_METRIC_LIST = Arrays.asList(OverprovisionAccuracy.class, UnderprovisionAccuracy.class, 
-			OverprovisionTimeshare.class, UnderprovisionTimeshare.class, Jitter.class);
+			OverprovisionTimeshare.class, UnderprovisionTimeshare.class, Jitter.class, Power.class, Instability.class);
 	
 	private static DecimalFormat format = new DecimalFormat( "#,###,###,##0.000" );
 	
