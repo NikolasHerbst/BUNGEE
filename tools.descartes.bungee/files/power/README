@@ -2,3 +2,6 @@ Power measurement results from se-srv-8
 VMs have 2 vCores @2 GHz and 3 GB RAM
 BUNGEE runs in wildfly using the LU workload
 Request size is 600 (avg response time ~250 ms), avoids any network bottlenecks
+
+Measurements with the _noHT postfix have been executed on the same SUT with Hyperthreading (HT) disabled.
+They run on VMs with 2 vCores @2.6 GHz and 4 GB RAM
