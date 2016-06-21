@@ -106,6 +106,7 @@ public class JMeterController {
 		// run JMeter
 		try {
 			ProgressController progressController = new ProgressUI();
+			System.out.println("java " + VM_ARGS +" -jar " + enquote(jMeterPath.toString()) + params);
 			Process process = Runtime.getRuntime().exec ("java " + VM_ARGS +" -jar " + enquote(jMeterPath.toString()) + params);
 			progressController.processStarted(process, start + duration);
 			 // getInputStream gives an Input stream connected to
@@ -140,9 +141,9 @@ public class JMeterController {
 				               + " -p " + enquote(properyFile.toString())
 							   + " -JtimestampFile=" + enquote(timestampFile.toString())
 							   + " -JoutputFile=" + enquote(outputFile.toString())
-							   + " -Jhostname=" + hostname
-							   + " -Jport=" + port
-							   + " -Jpath=" + path
+							  // + " -Jhostname=" + hostname
+							  // + " -Jport=" + port
+							  // + " -Jpath=" + path
 				               + " -JnumberOfThreads=" + threads
 				               + " -JproblemSize=" + problemSize
 							   + " -Jtimeout=" + timeout ;

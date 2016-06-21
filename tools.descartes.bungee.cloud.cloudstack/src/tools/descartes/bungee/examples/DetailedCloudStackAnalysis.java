@@ -31,20 +31,19 @@ import tools.descartes.bungee.slo.ServiceLevelObjective;
 import tools.descartes.bungee.utils.FileUtility;
 
 public class DetailedCloudStackAnalysis {
-	
-	
-	
+
 	public static void main(String[] args) {
-		File jmeterPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/jmeter.prop");
-		//File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/bungeeservlet.prop");
-		File hostPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/host.prop");
-		File requestPropertiesFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/request.prop");
-		File cloudStackPropsFile 	= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop");
-		File cloudSettingFile		= new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudSettings.prop");
-		
-		int maxResources = 5;
+		File jmeterPropertiesFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/jmeter.prop");
+		// File hostPropertiesFile = new File(FileUtility.FILE_LOCATION,
+		// "propertyFiles/bungeeservlet.prop");
+		File hostPropertiesFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/host.prop");
+		File requestPropertiesFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/request.prop");
+		File cloudStackPropsFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop");
+		File cloudSettingFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudSettings.prop");
+
+		int maxResources = 16;
 		double percent = 95;
-		int responseTime = 2100;
+		int responseTime = 2000;
 
 		ServiceLevelObjective slo = new ResponsetimePercentileSLO(percent, responseTime);
 
@@ -53,13 +52,14 @@ public class DetailedCloudStackAnalysis {
 		Host host = Host.load(hostPropertiesFile);
 		AdaptedCloudstackManagement cloudManagement = new AdaptedCloudstackManagement(cloudStackPropsFile);
 		cloudManagement.setCloudSettings(cloudSettingFile);
-		
-		
-		
-		//SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
-		SystemAnalysis analysis = new DetailedSystemAnalysisWithoutLoadBalancer(jMeter, cloudManagement, new File(FileUtility.FILE_LOCATION,"propertyFiles/cloudstack.prop"));
-		
-		analysis.setMaxResources(maxResources);
-		analysis.analyzeSystem(host, request, slo);
+
+		for (int i = 0; i < 1; i++) {
+			// SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
+			SystemAnalysis analysis = new DetailedSystemAnalysisWithoutLoadBalancer(jMeter, cloudManagement,
+					new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
+
+			analysis.setMaxResources(maxResources);
+			analysis.analyzeSystem(host, request, slo);
+		}
 	}
 }

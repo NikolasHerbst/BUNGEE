@@ -18,6 +18,10 @@ package tools.descartes.bungee.cloud.cloudstack;
 
 import java.util.Locale;
 
+/**
+ * @author root
+ *
+ */
 public class VirtualMachine {
 
 	private String id;
@@ -26,6 +30,8 @@ public class VirtualMachine {
 	private double cpuused;
 	private String state;
 	private String ipaddress;
+	private String hostid;
+	private int memory;
 
 	public VirtualMachine(String[] properties) {
 		
@@ -34,7 +40,10 @@ public class VirtualMachine {
 		setCpunumber(properties[2]);
 		setCpuused(properties[3]);
 		setState(properties[4]);
-		setIpaddress(properties[5]);
+		setHostid(properties[5]);
+		setMemory(properties[6]);
+		setIpaddress(properties[7]);
+		
 
 	}
 
@@ -100,5 +109,29 @@ public class VirtualMachine {
 	public void setIpaddress(String ipaddress) {
 		this.ipaddress = ipaddress;
 	}
+
+	public String getHostid() {
+		return hostid;
+	}
+
+	public void setHostid(String hostid) {
+		this.hostid = hostid;
+	}
+
+	public int getMemory() {
+		return memory;
+	}
+
+	public void setMemory(String memory) {
+		if(memory.equals("")) memory = "0";
+		this.memory = Integer.parseInt(memory);
+	}
+	
+	public void setMemory(int memory) {
+		this.memory = memory;
+	}
+	
+	
+	
 
 }

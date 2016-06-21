@@ -46,6 +46,16 @@ public class CloudStackAPI extends CloudStack {
 		return method;
 	}
 	
+	public Document listRouters(HashMap<String,String> optional) throws Exception{
+		  LinkedList<NameValuePair> arguments = newQueryValues("listRouters", optional);
+		  return Request(arguments);
+	  }
+	  
+	  public Document listSystemVms(HashMap<String,String> optional) throws Exception{
+		  LinkedList<NameValuePair> arguments = newQueryValues("listSystemVms", optional);
+		  return Request(arguments);
+	  }
+	
 	public Document destroyVirtualMachine(String id, boolean expunge) throws Exception {
 	    LinkedList<NameValuePair> arguments = newQueryValues("destroyVirtualMachine",null);
 	    arguments.add(new NameValuePair("id",id));
@@ -191,4 +201,8 @@ public class CloudStackAPI extends CloudStack {
 	    return Request(arguments);
 	}
 
+	public Document listHosts(HashMap<String,String> optional) throws Exception{
+		LinkedList<NameValuePair> arguments = newQueryValues("listHosts",optional);
+	    return Request(arguments);
+	}
 }
