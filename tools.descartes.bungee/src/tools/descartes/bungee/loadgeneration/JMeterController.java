@@ -115,7 +115,7 @@ public class JMeterController {
 			BufferedReader is = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		    String line;
 			while ((line = is.readLine()) != null) {
-				System.out.println(line);
+				//System.out.println(line);
 				progressController.currentProgress((System.currentTimeMillis() - start) / (double) duration);
 			}
 		    System.out.flush();

@@ -30,7 +30,9 @@ public class RunBenchmarkOnCloudstack {
 	private static ExtendedCloudInfo cloud = new  CloudstackInfo(new CloudStackInteraction(new File(fileLocation,"propertyFiles/cloudstack.prop")));
 	
 	public static void main(String[] args) {
+		long zeit = System.currentTimeMillis();
 		File measurementConfigFile  = new File(fileLocation,"propertyFiles/measurement.prop");
 		RunBenchmark.runBenchmark(cloud, measurementConfigFile,1);
+		System.out.println(System.currentTimeMillis() - zeit);
 	}
 }

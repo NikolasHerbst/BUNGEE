@@ -35,7 +35,7 @@ public class BinaryIntensitySearch implements IntensitySearch{
 	private JMeterController jMeter;
 
 
-	private int warmUpSeconds = 180;//240; // 30
+	private int warmUpSeconds = 60;//180;//240; // 30
 	private int duration = 120;//60; // 10
 
 
@@ -91,8 +91,9 @@ public class BinaryIntensitySearch implements IntensitySearch{
 					System.out.println("Run was not logged completely. Try again...");
 				}
 				try {
+					//System.out.println("Wait for cool down");
 					Thread.sleep(1000*30);
-					System.out.println("Wait for cool down");
+					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

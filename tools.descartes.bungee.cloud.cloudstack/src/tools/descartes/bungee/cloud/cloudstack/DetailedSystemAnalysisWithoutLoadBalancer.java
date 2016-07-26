@@ -62,7 +62,7 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 
 		boolean cloudOk = true;
 		for (int cloudSize = 1; cloudSize <= maxResources && !aborted; cloudSize++) {
-			cloudOk = reconfigureCloud(cloudSize, host);
+			//cloudOk = reconfigureCloud(cloudSize, host);
 			File cloudSizeFolder = new File(calibrationFolder, Integer.toString(cloudSize) + "_Instances");
 			if (cloudOk) {
 				int intensity = search.searchIntensity(host, request, startWith, cloudSizeFolder, slos);
@@ -89,12 +89,12 @@ public class DetailedSystemAnalysisWithoutLoadBalancer extends SystemAnalysis {
 		mapping.save(new File(calibrationFolder, "mapping.mapping"));
 		return mapping;
 	}
-
+	
 	private boolean reconfigureCloud(int cloudSize, Host host) {
-
 		Bounds bounds = new Bounds(cloudSize, cloudSize);
 		try {
-			cli.startInstances(cloudSize, host.getTag());
+			cli.restartRunningAndAddStartNewInstances(host.getTag(),cloudSize);
+			
 
 		} catch (Exception e) {
 			return false;

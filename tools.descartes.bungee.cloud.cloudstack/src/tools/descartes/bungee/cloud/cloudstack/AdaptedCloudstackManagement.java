@@ -40,7 +40,9 @@ public class AdaptedCloudstackManagement implements CloudManagement {
 		this(new CloudStackInteraction(cloudstackPropertiesFile));
 	}
 
-	
+	public CloudStackInteraction getCloudController(){
+		return cloud;
+	}
 
 	public CloudSettings getCloudSettings() {
 		return cloudSettings;

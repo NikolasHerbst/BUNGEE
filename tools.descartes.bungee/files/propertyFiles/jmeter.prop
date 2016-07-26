@@ -2,5 +2,5 @@
 #Tue Mar 11 15:12:50 CET 2014
 noGui=true
 jMeterPath=../apache-jmeter-2.11/bin/ApacheJMeter.jar
-jmxFile=jmx/noGui2.jmx
+jmxFile=jmx/noGui3.jmx
 propertyFile=propertyFiles/jmeter.properties

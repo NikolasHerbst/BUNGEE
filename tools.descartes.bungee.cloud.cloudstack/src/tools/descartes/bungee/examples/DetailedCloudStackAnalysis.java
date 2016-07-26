@@ -32,7 +32,7 @@ import tools.descartes.bungee.utils.FileUtility;
 
 public class DetailedCloudStackAnalysis {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		File jmeterPropertiesFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/jmeter.prop");
 		// File hostPropertiesFile = new File(FileUtility.FILE_LOCATION,
 		// "propertyFiles/bungeeservlet.prop");
@@ -41,25 +41,33 @@ public class DetailedCloudStackAnalysis {
 		File cloudStackPropsFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop");
 		File cloudSettingFile = new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudSettings.prop");
 
-		int maxResources = 16;
-		double percent = 95;
-		int responseTime = 2000;
+		int maxResources = 12;
+		double percent = 90;
+		int responseTime = 5000;
 
 		ServiceLevelObjective slo = new ResponsetimePercentileSLO(percent, responseTime);
 
 		JMeterController jMeter = new JMeterController(jmeterPropertiesFile);
 		Request request = Request.load(requestPropertiesFile);
 		Host host = Host.load(hostPropertiesFile);
-		AdaptedCloudstackManagement cloudManagement = new AdaptedCloudstackManagement(cloudStackPropsFile);
-		cloudManagement.setCloudSettings(cloudSettingFile);
+		
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
+			AdaptedCloudstackManagement cloudManagement = new AdaptedCloudstackManagement(cloudStackPropsFile);
+			cloudManagement.setCloudSettings(cloudSettingFile);
+			
+			
+			
 			// SystemAnalysis analysis = new SimpleSystemAnalysis(jMeter);
 			SystemAnalysis analysis = new DetailedSystemAnalysisWithoutLoadBalancer(jMeter, cloudManagement,
 					new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
 
 			analysis.setMaxResources(maxResources);
 			analysis.analyzeSystem(host, request, slo);
+			//cloudManagement.getCloudController().restatVM("1dcb2f37-bc5e-4dc0-8d20-4daa6188a484");
+			cloudManagement.getCloudController().startInstances(0, "bungeesmall");
+			Thread.sleep(1000*60*3);
+			
 		}
 	}
 }
