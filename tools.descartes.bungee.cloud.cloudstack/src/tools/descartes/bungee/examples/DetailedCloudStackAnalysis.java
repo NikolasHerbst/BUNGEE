@@ -52,7 +52,7 @@ public class DetailedCloudStackAnalysis {
 		Host host = Host.load(hostPropertiesFile);
 		
 
-		for (int i = 0; i < 2; i++) {
+		
 			AdaptedCloudstackManagement cloudManagement = new AdaptedCloudstackManagement(cloudStackPropsFile);
 			cloudManagement.setCloudSettings(cloudSettingFile);
 			
@@ -64,10 +64,6 @@ public class DetailedCloudStackAnalysis {
 
 			analysis.setMaxResources(maxResources);
 			analysis.analyzeSystem(host, request, slo);
-			//cloudManagement.getCloudController().restatVM("1dcb2f37-bc5e-4dc0-8d20-4daa6188a484");
-			cloudManagement.getCloudController().startInstances(0, "bungeesmall");
-			Thread.sleep(1000*60*3);
 			
-		}
 	}
 }
