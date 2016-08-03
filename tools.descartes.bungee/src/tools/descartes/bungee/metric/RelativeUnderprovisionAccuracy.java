@@ -21,7 +21,7 @@ import java.util.List;
 import tools.descartes.bungee.allocation.ResourceAllocation;
 import tools.descartes.bungee.utils.FileUtility;
 
-public class RelativeUnderprovisionAccuracy extends AbstractRelativeAreaDuration {
+public class RelativeUnderprovisionAccuracy extends AbstractAreaDuration {
 	String explanation = null;
 	String csvString = null;
 	
@@ -35,9 +35,9 @@ public class RelativeUnderprovisionAccuracy extends AbstractRelativeAreaDuration
 	protected double evaluate() {
 		Provisioning provision = getProvisioning();
 		long duration = getDuration();
-		double result = provision.amountUnder / duration;
-		gernerateExplanantion(provision.amountUnder, result);
-		generateCSV(provision.amountUnder, result);
+		double result = provision.relativeAmountUnder / duration;
+		gernerateExplanantion(provision.relativeAmountUnder, result);
+		generateCSV(provision.relativeAmountUnder, result);
 		return result;
 	}
 	

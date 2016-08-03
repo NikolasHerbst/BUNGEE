@@ -25,7 +25,9 @@ public abstract class AbstractAreaDuration extends Metric {
 
 	class Provisioning {
 		double amountUnder = 0;
+		double relativeAmountUnder = 0;
 		double amountOver = 0;
+		double relativeAmountOver = 0;
 		double timeUnder = 0;
 		double timeOver = 0;
 	}
@@ -74,13 +76,16 @@ public abstract class AbstractAreaDuration extends Metric {
 				long height = lastSupplyAllocation.getCurrentAmount() - lastDemandAllocation.getCurrentAmount();
 				long time = end - start;
 				long area = time * height;
+				long relativeArea = area/lastDemandAllocation.getCurrentAmount();
 				if (height > 0)
 				{
 					provisioning.timeOver += time;
 					provisioning.amountOver += area;
+					provisioning.relativeAmountOver += relativeArea;
 				} else if (height < 0) {
 					provisioning.timeUnder += time;
 					provisioning.amountUnder -= area;
+					provisioning.relativeAmountUnder -= relativeArea;
 					
 				}
 			}

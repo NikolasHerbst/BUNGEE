@@ -20,7 +20,7 @@ import java.util.List;
 import tools.descartes.bungee.allocation.ResourceAllocation;
 import tools.descartes.bungee.utils.FileUtility;
 
-public class RelativeOverprovisionAccuracy extends AbstractRelativeAreaDuration {
+public class RelativeOverprovisionAccuracy extends AbstractAreaDuration {
 	String explanation = null;
 	String csvString = null;
 	
@@ -34,9 +34,9 @@ public class RelativeOverprovisionAccuracy extends AbstractRelativeAreaDuration 
 	protected double evaluate() {
 		Provisioning provision = getProvisioning();
 		long duration = getDuration();
-		double result = provision.amountOver / duration;
-		gernerateExplanantion(provision.amountOver, result);
-		generateCSV(provision.amountOver, result);
+		double result = provision.relativeAmountOver / duration;
+		gernerateExplanantion(provision.relativeAmountOver, result);
+		generateCSV(provision.relativeAmountOver, result);
 		return result;
 	}
 	
