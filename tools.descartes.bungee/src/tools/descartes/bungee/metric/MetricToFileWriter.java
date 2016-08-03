@@ -30,8 +30,8 @@ import tools.descartes.bungee.allocation.SupplySeries;
 import tools.descartes.bungee.utils.FileUtility;
 
 public class MetricToFileWriter {
-	public static List<Class<? extends Metric>> STD_METRIC_LIST = Arrays.asList(OverprovisionAccuracy.class, UnderprovisionAccuracy.class, 
-			OverprovisionTimeshare.class, UnderprovisionTimeshare.class, Jitter.class, Power.class, Instability.class);
+	public static List<Class<? extends Metric>> STD_METRIC_LIST = Arrays.asList(OverprovisionAccuracy.class, RelativeOverprovisionAccuracy.class, UnderprovisionAccuracy.class, RelativeUnderprovisionAccuracy.class, 
+			OverprovisionTimeshare.class, UnderprovisionTimeshare.class, Jitter.class, Instability.class, Power.class);
 	
 	private static DecimalFormat format = new DecimalFormat( "#,###,###,##0.000" );
 	
