@@ -109,7 +109,7 @@ public class CloudStackInteraction implements CloudInfo {
 		// change order of hosts 8, 6, 7, 4, 5, 3, 1, 2
 		Collections.sort(hostids);
 		Collections.reverse(hostids);
-		
+
 		updateHostCPUs();
 
 	}
@@ -251,10 +251,10 @@ public class CloudStackInteraction implements CloudInfo {
 		}
 	}
 
-	public void restartVM(String id) throws Exception{
+	public void restartVM(String id) throws Exception {
 		client.rebootVirtualMachine(id);
 	}
-	
+
 	/**
 	 * Deploys a VM https://cloudstack.apache.org/api/apidocs-4.8/root_admin/
 	 * deployVirtualMachine.html
@@ -483,10 +483,10 @@ public class CloudStackInteraction implements CloudInfo {
 	 */
 	public void startInstances(int cloudSize, String tag) throws Exception {
 		int currentSize = getNumberOfResources(tag);
-		//System.out.println("running instances: " + currentSize);
+		// System.out.println("running instances: " + currentSize);
 		int requiredSize = cloudSize - currentSize;
 		ArrayList<VirtualMachine> vms = getAllVms(tag, STOPPED);
-		//System.out.println("stopped instances: " + vms.size());
+		// System.out.println("stopped instances: " + vms.size());
 		if (requiredSize >= 0) {
 			System.out.println("required instances: " + requiredSize);
 		} else {
@@ -667,23 +667,30 @@ public class CloudStackInteraction implements CloudInfo {
 	public void restartRunningAndAddStartNewInstances(String tag, int amount) throws Exception {
 		ArrayList<VirtualMachine> vms = getAllVms(tag, RUNNING);
 		startInstances(amount, tag);
-		for(int i = 0; i < vms.size(); i++  ){
-			stopVM(vms.get(i).getId());
+		if (vms.size() > 1) {
+			for (int i = 0; i < vms.size(); i++) {
+				stopVM(vms.get(i).getId());
+			}
+			for (int i = 0; i < vms.size(); i++) {
+				startVM(vms.get(i).getId(), vms.get(i).getHostid());
+			}
 		}
-		for(int i = 0; i < vms.size(); i++  ){
-			startVM(vms.get(i).getId(),vms.get(i).getHostid());
-		}
-		
+
 	}
+
 	public static void main(String[] args) throws Exception {
 		CloudStackInteraction management;
 
 		management = new CloudStackInteraction(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
-	//System.out.println(management.getAllVms("bungeesmall",RUNNING).size());
-		/*HashMap<String, String> optional = new HashMap<String, String>();
-		optional.put("name", "specj-mfgsupplier-1");
-		optional.put("hostid", "3521843c-8d90-4218-b5db-df836bde0c7b");
-		management.client.deployVirtualMachine("d01eb58d-2fe3-498c-a598-79c187411bf5", "c166e952-c746-4d1e-a0f4-8c59bc6e8501", management.zoneid, optional);*/
+		// System.out.println(management.getAllVms("bungeesmall",RUNNING).size());
+		/*
+		 * HashMap<String, String> optional = new HashMap<String, String>();
+		 * optional.put("name", "specj-mfgsupplier-1"); optional.put("hostid",
+		 * "3521843c-8d90-4218-b5db-df836bde0c7b");
+		 * management.client.deployVirtualMachine(
+		 * "d01eb58d-2fe3-498c-a598-79c187411bf5",
+		 * "c166e952-c746-4d1e-a0f4-8c59bc6e8501", management.zoneid, optional);
+		 */
 		// System.out.println(management.order);
 
 		/*
@@ -711,16 +718,16 @@ public class CloudStackInteraction implements CloudInfo {
 		 */
 		// 5 -> 7 -> 4
 
-		//management.startInstances(16, "bungeesmall");
+		// management.startInstances(16, "bungeesmall");
 		// ArrayList<VirtualMachine> list = management.getAllVms("bungeesmall");
 		// management.updateServiceOfferings(list,
 		// "f0c0d631-ad4d-462a-9f0c-24e3b17dd16b");
 		// for(VirtualMachine vm: list){ System.out.println(vm); }
-		/*for (int i = 1; i <= 16; i++) {
-			management.startInstances(i, "bungeesmall");
-			Thread.sleep(1000*60*2);
-		}*/
-		//management.startAllVMs(management.getAllVms("specj"));
+		/*
+		 * for (int i = 1; i <= 16; i++) { management.startInstances(i,
+		 * "bungeesmall"); Thread.sleep(1000*60*2); }
+		 */
+		// management.startAllVMs(management.getAllVms("specj"));
 		// management.deployVM("bungeesmall16");
 
 		// management.stopAllVMs(management.getAllRunningVms());
@@ -748,5 +755,4 @@ public class CloudStackInteraction implements CloudInfo {
 
 	}
 
-	
 }
