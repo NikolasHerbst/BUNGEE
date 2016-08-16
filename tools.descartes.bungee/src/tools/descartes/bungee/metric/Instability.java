@@ -102,7 +102,7 @@ public class Instability extends AbstractAreaDuration {
 	}
 
 	private void gernerateExplanantion(double result) {
-		explanation = NAME + result + System.lineSeparator();
+		explanation = NAME +": " + result + System.lineSeparator();
 		explanation += "duration [min]: " + getDuration() / MINUTE_TO_MILLIS + System.lineSeparator();
 	}
 
