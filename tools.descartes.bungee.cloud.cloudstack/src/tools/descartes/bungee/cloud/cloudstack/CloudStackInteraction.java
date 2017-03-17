@@ -422,7 +422,7 @@ public class CloudStackInteraction implements CloudInfo {
 		if (!state.equals("")) {
 			options.put("state", state);
 		}
-		options.put("groupid", group);
+		//options.put("groupid", group);
 		Document doc = client.listVirtualMachines(options);
 
 		ArrayList<VirtualMachine> vms = VMStates.read(doc);
@@ -682,6 +682,7 @@ public class CloudStackInteraction implements CloudInfo {
 		CloudStackInteraction management;
 
 		management = new CloudStackInteraction(new File(FileUtility.FILE_LOCATION, "propertyFiles/cloudstack.prop"));
+		management.startVM(management.getAllVms("coco").get(1).getId());
 		// System.out.println(management.getAllVms("bungeesmall",RUNNING).size());
 		/*
 		 * HashMap<String, String> optional = new HashMap<String, String>();
